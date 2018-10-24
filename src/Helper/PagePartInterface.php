@@ -1,8 +1,8 @@
 <?php
 
-namespace  Kunstmaan\PagePartBundle\Helper;
+namespace  Hgabka\PagePartBundle\Helper;
 
-use Kunstmaan\AdminBundle\Entity\EntityInterface;
+use Hgabka\UtilsBundle\Entity\EntityInterface;
 
 /**
  * PagePartInterface.

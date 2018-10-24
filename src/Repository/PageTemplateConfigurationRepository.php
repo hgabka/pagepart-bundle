@@ -1,11 +1,11 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\Repository;
+namespace Hgabka\PagePartBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
-use Kunstmaan\PagePartBundle\Entity\PageTemplateConfiguration;
-use Kunstmaan\PagePartBundle\Helper\HasPageTemplateInterface;
-use Kunstmaan\UtilitiesBundle\Helper\ClassLookup;
+use Hgabka\PagePartBundle\Entity\PageTemplateConfiguration;
+use Hgabka\PagePartBundle\Helper\HasPageTemplateInterface;
+use Hgabka\UtilsBundle\Helper\ClassLookup;
 
 /**
  * PageTemplateConfigurationRepository.

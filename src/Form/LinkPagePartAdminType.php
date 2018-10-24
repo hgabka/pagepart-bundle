@@ -1,8 +1,9 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\Form;
+namespace Hgabka\PagePartBundle\Form;
 
-use Kunstmaan\NodeBundle\Form\Type\URLChooserType;
+use Hgabka\NodeBundle\Form\Type\URLChooserType;
+use Hgabka\PagePartBundle\Entity\LinkPagePart;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -40,7 +41,7 @@ class LinkPagePartAdminType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'kunstmaan_pagepartbundle_linkpageparttype';
+        return 'hgabka_pagepartbundle_linkpageparttype';
     }
 
     /**
@@ -49,7 +50,7 @@ class LinkPagePartAdminType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'Kunstmaan\PagePartBundle\Entity\LinkPagePart',
+            'data_class' => LinkPagePart::class,
         ]);
     }
 }

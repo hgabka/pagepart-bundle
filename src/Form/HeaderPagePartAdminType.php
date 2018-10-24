@@ -1,7 +1,8 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\Form;
+namespace Hgabka\PagePartBundle\Form;
 
+use Hgabka\PagePartBundle\Entity\HeaderPagePart;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -39,7 +40,7 @@ class HeaderPagePartAdminType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'kunstmaan_pagepartbundle_headerpageparttype';
+        return 'hgabka_pagepartbundle_headerpageparttype';
     }
 
     /**
@@ -49,7 +50,7 @@ class HeaderPagePartAdminType extends AbstractType
     {
         $resolver->setDefaults(
           [
-            'data_class' => 'Kunstmaan\PagePartBundle\Entity\HeaderPagePart',
+            'data_class' => HeaderPagePart::class,
           ]
         );
     }

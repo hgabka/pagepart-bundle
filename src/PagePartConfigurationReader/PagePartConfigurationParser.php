@@ -1,9 +1,9 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\PagePartConfigurationReader;
+namespace Hgabka\PagePartBundle\PagePartConfigurationReader;
 
-use Kunstmaan\PagePartBundle\PagePartAdmin\PagePartAdminConfigurator;
-use Kunstmaan\PagePartBundle\PagePartAdmin\PagePartAdminConfiguratorInterface;
+use Hgabka\PagePartBundle\PagePartAdmin\PagePartAdminConfigurator;
+use Hgabka\PagePartBundle\PagePartAdmin\PagePartAdminConfiguratorInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Yaml\Yaml;
 
@@ -40,7 +40,7 @@ class PagePartConfigurationParser implements PagePartConfigurationParserInterfac
      */
     public function parse($name, array $existing = [])
     {
-        if (in_array($name, $this->stack, true)) {
+        if (\in_array($name, $this->stack, true)) {
             throw new \RuntimeException(sprintf('Recursion detected when parsing %s -> %s', implode(' -> ', $this->stack), $name));
         }
         $this->stack[] = $name;
@@ -106,7 +106,7 @@ class PagePartConfigurationParser implements PagePartConfigurationParserInterfac
         }
 
         $nameParts = explode(':', $name);
-        if (2 !== count($nameParts)) {
+        if (2 !== \count($nameParts)) {
             throw new \Exception(sprintf(
                 'Malformed namespaced configuration name "%s" (expecting "namespace:pagename").',
                 $name

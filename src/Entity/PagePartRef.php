@@ -1,6 +1,6 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\Entity;
+namespace Hgabka\PagePartBundle\Entity;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping as ORM;
@@ -8,8 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Reference between a page and a pagepart.
  *
- * @ORM\Entity(repositoryClass="Kunstmaan\PagePartBundle\Repository\PagePartRefRepository")
- * @ORM\Table(name="kuma_page_part_refs", indexes={@ORM\Index(name="idx_page_part_search", columns={"pageId", "pageEntityname", "context"})})
+ * @ORM\Entity(repositoryClass="Hgabka\PagePartBundle\Repository\PagePartRefRepository")
+ * @ORM\Table(name="hg_page_part_page_part_refs", indexes={@ORM\Index(name="idx_page_part_search", columns={"pageId", "pageEntityname", "context"})})
  * @ORM\HasLifecycleCallbacks()
  */
 class PagePartRef
@@ -265,7 +265,7 @@ class PagePartRef
     /**
      * @param \Doctrine\ORM\EntityManager $em
      *
-     * @return \Kunstmaan\PagePartBundle\Helper\PagePartInterface
+     * @return \Hgabka\PagePartBundle\Helper\PagePartInterface
      */
     public function getPagePart(EntityManager $em)
     {

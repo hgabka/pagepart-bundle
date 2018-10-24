@@ -1,6 +1,14 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\PagePartAdmin;
+namespace Hgabka\PagePartBundle\PagePartAdmin;
+
+use Hgabka\PagePartBundle\Entity\HeaderPagePart;
+use Hgabka\PagePartBundle\Entity\LinePagePart;
+use Hgabka\PagePartBundle\Entity\LinkPagePart;
+use Hgabka\PagePartBundle\Entity\RawHTMLPagePart;
+use Hgabka\PagePartBundle\Entity\TextPagePart;
+use Hgabka\PagePartBundle\Entity\TocPagePart;
+use Hgabka\PagePartBundle\Entity\ToTopPagePart;
 
 /**
  * Builder.
@@ -12,13 +20,13 @@ class Builder
      */
     public function getPageParts()
     {
-        $pageParts = [['name' => 'Header', 'class' => 'Kunstmaan\PagePartBundle\Entity\HeaderPagePart'],
-                           ['name' => 'Text', 'class' => 'Kunstmaan\PagePartBundle\Entity\TextPagePart'],
-                           ['name' => 'Link', 'class' => 'Kunstmaan\PagePartBundle\Entity\LinkPagePart'],
-                           ['name' => 'Raw HTML', 'class' => 'Kunstmaan\PagePartBundle\Entity\RawHTMLPagePart'],
-                           ['name' => 'Line', 'class' => 'Kunstmaan\PagePartBundle\Entity\LinePagePart'],
-                           ['name' => 'TOC', 'class' => 'Kunstmaan\PagePartBundle\Entity\TocPagePart'],
-                           ['name' => 'Link To Top', 'class' => 'Kunstmaan\PagePartBundle\Entity\ToTopPagePart'], ];
+        $pageParts = [['name' => 'Header', 'class' => HeaderPagePart::class],
+                           ['name' => 'Text', 'class' => TextPagePart::class],
+                           ['name' => 'Link', 'class' => LinkPagePart::class],
+                           ['name' => 'Raw HTML', 'class' => RawHTMLPagePart::class],
+                           ['name' => 'Line', 'class' => LinePagePart::class],
+                           ['name' => 'TOC', 'class' => TocPagePart::class],
+                           ['name' => 'Link To Top', 'class' => ToTopPagePart::class], ];
 
         return $pageParts;
     }

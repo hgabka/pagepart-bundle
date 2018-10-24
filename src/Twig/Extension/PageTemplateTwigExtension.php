@@ -1,9 +1,9 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\Twig\Extension;
+namespace Hgabka\PagePartBundle\Twig\Extension;
 
-use Kunstmaan\PagePartBundle\Helper\HasPageTemplateInterface;
-use Kunstmaan\PagePartBundle\PageTemplate\PageTemplateConfigurationService;
+use Hgabka\PagePartBundle\Helper\HasPageTemplateInterface;
+use Hgabka\PagePartBundle\PageTemplate\PageTemplateConfigurationService;
 
 /**
  * PagePartTwigExtension.

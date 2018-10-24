@@ -1,20 +1,26 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\Entity;
+namespace Hgabka\PagePartBundle\Entity;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping as ORM;
-use Kunstmaan\AdminBundle\Entity\AbstractEntity;
-use Kunstmaan\NodeBundle\Entity\PageInterface;
+use Hgabka\NodeBundle\Entity\PageInterface;
 
 /**
  * Configuration for page templates.
  *
- * @ORM\Entity(repositoryClass="Kunstmaan\PagePartBundle\Repository\PageTemplateConfigurationRepository")
- * @ORM\Table(name="kuma_page_template_configuration", indexes={@ORM\Index(name="idx_page_template_config_search", columns={"page_id", "page_entity_name"})})
+ * @ORM\Entity(repositoryClass="Hgabka\PagePartBundle\Repository\PageTemplateConfigurationRepository")
+ * @ORM\Table(name="hg_page_part_page_template_configuration", indexes={@ORM\Index(name="idx_page_template_config_search", columns={"page_id", "page_entity_name"})})
  */
-class PageTemplateConfiguration extends AbstractEntity
+class PageTemplateConfiguration
 {
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer", name="id")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
     /**
      * @ORM\Column(type="bigint", name="page_id")
      */
@@ -29,6 +35,26 @@ class PageTemplateConfiguration extends AbstractEntity
      * @ORM\Column(type="string", name="page_template")
      */
     protected $pageTemplate;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     *
+     * @return AbstractPagePart
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
 
     /**
      * Get pageId.

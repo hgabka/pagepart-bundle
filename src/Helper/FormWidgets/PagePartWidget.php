@@ -1,15 +1,15 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\Helper\FormWidgets;
+namespace Hgabka\PagePartBundle\Helper\FormWidgets;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
-use Kunstmaan\AdminBundle\Helper\FormWidgets\FormWidget;
-use Kunstmaan\NodeBundle\Entity\HasNodeInterface;
-use Kunstmaan\PagePartBundle\Helper\HasPagePartsInterface;
-use Kunstmaan\PagePartBundle\PagePartAdmin\PagePartAdmin;
-use Kunstmaan\PagePartBundle\PagePartAdmin\PagePartAdminConfiguratorInterface;
-use Kunstmaan\PagePartBundle\PagePartAdmin\PagePartAdminFactory;
+use Hgabka\NodeBundle\Entity\HasNodeInterface;
+use Hgabka\PagePartBundle\Helper\HasPagePartsInterface;
+use Hgabka\PagePartBundle\PagePartAdmin\PagePartAdmin;
+use Hgabka\PagePartBundle\PagePartAdmin\PagePartAdminConfiguratorInterface;
+use Hgabka\PagePartBundle\PagePartAdmin\PagePartAdminFactory;
+use Hgabka\UtilsBundle\Helper\FormWidgets\FormWidget;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\HttpFoundation\Request;
@@ -64,7 +64,7 @@ class PagePartWidget extends FormWidget
         $this->pagePartAdminConfigurator = $pagePartAdminConfigurator;
 
         $this->pagePartAdmin = $pagePartAdminFactory->createList($pagePartAdminConfigurator, $em, $page, null);
-        $this->setTemplate('KunstmaanPagePartBundle:FormWidgets\PagePartWidget:widget.html.twig');
+        $this->setTemplate('HgabkaPagePartBundle:FormWidgets\PagePartWidget:widget.html.twig');
     }
 
     /**

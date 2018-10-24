@@ -1,8 +1,8 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\PagePartConfigurationReader;
+namespace Hgabka\PagePartBundle\PagePartConfigurationReader;
 
-use Kunstmaan\PagePartBundle\PagePartAdmin\PagePartAdminConfiguratorInterface;
+use Hgabka\PagePartBundle\PagePartAdmin\PagePartAdminConfiguratorInterface;
 
 interface PagePartConfigurationParserInterface
 {

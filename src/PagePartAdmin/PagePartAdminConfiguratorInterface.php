@@ -1,6 +1,6 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\PagePartAdmin;
+namespace Hgabka\PagePartBundle\PagePartAdmin;
 
 interface PagePartAdminConfiguratorInterface
 {

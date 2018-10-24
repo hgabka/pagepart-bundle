@@ -29,7 +29,7 @@ region:
         min: Minimize
         max: Maximize
 
-kuma_pagepart:
+hg_pagepart:
     tab:
         content:
             title: Content

@@ -1,11 +1,11 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\Twig\Extension;
+namespace Hgabka\PagePartBundle\Twig\Extension;
 
 use Doctrine\ORM\EntityManager;
-use Kunstmaan\PagePartBundle\Helper\HasPagePartsInterface;
-use Kunstmaan\PagePartBundle\Helper\PagePartInterface;
-use Kunstmaan\PagePartBundle\Repository\PagePartRefRepository;
+use Hgabka\PagePartBundle\Helper\HasPagePartsInterface;
+use Hgabka\PagePartBundle\Helper\PagePartInterface;
+use Hgabka\PagePartBundle\Repository\PagePartRefRepository;
 
 /**
  * PagePartTwigExtension.
@@ -47,7 +47,7 @@ class PagePartTwigExtension extends \Twig_Extension
      */
     public function renderPageParts(\Twig_Environment $env, array $twigContext, HasPagePartsInterface $page, $contextName = 'main', array $parameters = [])
     {
-        $template = $env->loadTemplate('KunstmaanPagePartBundle:PagePartTwigExtension:widget.html.twig');
+        $template = $env->loadTemplate('HgabkaPagePartBundle:PagePartTwigExtension:widget.html.twig');
         // @var $entityRepository PagePartRefRepository
         $pageparts = $this->getPageParts($page, $contextName);
         $newTwigContext = array_merge($parameters, [

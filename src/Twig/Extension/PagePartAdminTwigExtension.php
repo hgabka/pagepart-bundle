@@ -1,8 +1,8 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\Twig\Extension;
+namespace Hgabka\PagePartBundle\Twig\Extension;
 
-use Kunstmaan\PagePartBundle\PagePartAdmin\PagePartAdmin;
+use Hgabka\PagePartBundle\PagePartAdmin\PagePartAdmin;
 
 /**
  * PagePartAdminTwigExtension.
@@ -45,7 +45,7 @@ class PagePartAdminTwigExtension extends \Twig_Extension
     public function renderWidget(\Twig_Environment $env, PagePartAdmin $ppAdmin, $form = null, array $parameters = [], $templateName = null)
     {
         if (null === $templateName) {
-            $templateName = 'KunstmaanPagePartBundle:PagePartAdminTwigExtension:widget.html.twig';
+            $templateName = 'HgabkaPagePartBundle:PagePartAdminTwigExtension:widget.html.twig';
         }
 
         $template = $env->loadTemplate($templateName);

@@ -1,11 +1,11 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\PageTemplate;
+namespace Hgabka\PagePartBundle\PageTemplate;
 
-use Kunstmaan\PagePartBundle\Entity\PageTemplateConfiguration;
-use Kunstmaan\PagePartBundle\Helper\HasPageTemplateInterface;
-use Kunstmaan\PagePartBundle\Repository\PageTemplateConfigurationRepository;
-use Kunstmaan\UtilitiesBundle\Helper\ClassLookup;
+use Hgabka\PagePartBundle\Entity\PageTemplateConfiguration;
+use Hgabka\PagePartBundle\Helper\HasPageTemplateInterface;
+use Hgabka\PagePartBundle\Repository\PageTemplateConfigurationRepository;
+use Hgabka\UtilsBundle\Helper\ClassLookup;
 
 class PageTemplateConfigurationService
 {

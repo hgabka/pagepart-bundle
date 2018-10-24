@@ -1,9 +1,9 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\PagePartConfigurationReader;
+namespace Hgabka\PagePartBundle\PagePartConfigurationReader;
 
-use Kunstmaan\PagePartBundle\Helper\HasPagePartsInterface;
-use Kunstmaan\PagePartBundle\PagePartAdmin\AbstractPagePartAdminConfigurator;
+use Hgabka\PagePartBundle\Helper\HasPagePartsInterface;
+use Hgabka\PagePartBundle\PagePartAdmin\AbstractPagePartAdminConfigurator;
 
 interface PagePartConfigurationReaderInterface
 {

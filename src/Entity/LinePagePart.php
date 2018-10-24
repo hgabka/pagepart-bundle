@@ -1,15 +1,15 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\Entity;
+namespace Hgabka\PagePartBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Kunstmaan\PagePartBundle\Form\LinePagePartAdminType;
+use Hgabka\PagePartBundle\Form\LinePagePartAdminType;
 
 /**
  * LinePagePart.
  *
  * @ORM\Entity
- * @ORM\Table(name="kuma_line_page_parts")
+ * @ORM\Table(name="hg_page_part_line_page_parts")
  */
 class LinePagePart extends AbstractPagePart
 {
@@ -26,7 +26,7 @@ class LinePagePart extends AbstractPagePart
      */
     public function getDefaultView()
     {
-        return 'KunstmaanPagePartBundle:LinePagePart:view.html.twig';
+        return 'HgabkaPagePartBundle:LinePagePart:view.html.twig';
     }
 
     /**

@@ -1,10 +1,10 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\Controller;
+namespace Hgabka\PagePartBundle\Controller;
 
-use Kunstmaan\PagePartBundle\Helper\HasPagePartsInterface;
-use Kunstmaan\PagePartBundle\Helper\PagePartInterface;
-use Kunstmaan\PagePartBundle\PagePartAdmin\PagePartAdmin;
+use Hgabka\PagePartBundle\Helper\HasPagePartsInterface;
+use Hgabka\PagePartBundle\Helper\PagePartInterface;
+use Hgabka\PagePartBundle\PagePartAdmin\PagePartAdmin;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -18,7 +18,7 @@ class PagePartAdminController extends Controller
 {
     /**
      * @Route("/newPagePart", name="KunstmaanPagePartBundle_admin_newpagepart")
-     * @Template("KunstmaanPagePartBundle:PagePartAdminTwigExtension:pagepart.html.twig")
+     * @Template("HgabkaPagePartBundle:PagePartAdminTwigExtension:pagepart.html.twig")
      *
      * @param \Symfony\Component\HttpFoundation\Request $request
      *
@@ -40,7 +40,7 @@ class PagePartAdminController extends Controller
             throw new \RuntimeException(sprintf('Given page (%s:%d) has no pageparts', $pageClassName, $pageId));
         }
 
-        $pagePartConfigurationReader = $this->container->get('kunstmaan_page_part.page_part_configuration_reader');
+        $pagePartConfigurationReader = $this->container->get('hgabka_page_part.page_part_configuration_reader');
         $pagePartAdminConfigurators = $pagePartConfigurationReader->getPagePartAdminConfigurators($page);
 
         $pagePartAdminConfigurator = null;
@@ -77,7 +77,7 @@ class PagePartAdminController extends Controller
         $formBuilder->setData($data);
         $form = $formBuilder->getForm();
         $formview = $form->createView();
-        $extended = $this->getParameter('kunstmaan_page_part.extended');
+        $extended = $this->getParameter('hgabka_page_part.extended');
 
         return [
             'id' => $id,

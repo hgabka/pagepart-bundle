@@ -1,6 +1,6 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\PageTemplate;
+namespace Hgabka\PagePartBundle\PageTemplate;
 
 /**
  * Definition of a region in a page template.

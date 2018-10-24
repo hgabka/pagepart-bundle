@@ -1,8 +1,8 @@
 <?php
 
-namespace  Kunstmaan\PagePartBundle\Helper;
+namespace  Hgabka\PagePartBundle\Helper;
 
-use Kunstmaan\PagePartBundle\PagePartAdmin\PagePartAdminConfiguratorInterface;
+use Hgabka\PagePartBundle\PagePartAdmin\PagePartAdminConfiguratorInterface;
 
 /**
  * An interface for something that contains pageparts.

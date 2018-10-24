@@ -1,6 +1,6 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\Event;
+namespace Hgabka\PagePartBundle\Event;
 
 /**
  * Events.
@@ -12,5 +12,5 @@ class Events
      *
      * @var string
      */
-    const POST_PERSIST = 'kunstmaan_pagepart.postPersist';
+    const POST_PERSIST = 'hgabka_pagepart.postPersist';
 }

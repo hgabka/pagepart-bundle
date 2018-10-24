@@ -1,6 +1,6 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\PageTemplate;
+namespace Hgabka\PagePartBundle\PageTemplate;
 
 interface PageTemplateInterface
 {

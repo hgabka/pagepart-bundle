@@ -1,19 +1,19 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\EventListener;
+namespace Hgabka\PagePartBundle\EventListener;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Kunstmaan\AdminBundle\Helper\FormWidgets\ListWidget;
-use Kunstmaan\AdminBundle\Helper\FormWidgets\Tabs\Tab;
-use Kunstmaan\NodeBundle\Event\AdaptFormEvent;
-use Kunstmaan\PagePartBundle\Helper\FormWidgets\PagePartWidget;
-use Kunstmaan\PagePartBundle\Helper\FormWidgets\PageTemplateWidget;
-use Kunstmaan\PagePartBundle\Helper\HasPagePartsInterface;
-use Kunstmaan\PagePartBundle\Helper\HasPageTemplateInterface;
-use Kunstmaan\PagePartBundle\PagePartAdmin\PagePartAdminFactory;
-use Kunstmaan\PagePartBundle\PagePartConfigurationReader\PagePartConfigurationReaderInterface;
-use Kunstmaan\PagePartBundle\PageTemplate\PageTemplateConfigurationReaderInterface;
-use Kunstmaan\PagePartBundle\PageTemplate\PageTemplateConfigurationService;
+use Hgabka\NodeBundle\Event\AdaptFormEvent;
+use Hgabka\PagePartBundle\Helper\FormWidgets\PagePartWidget;
+use Hgabka\PagePartBundle\Helper\FormWidgets\PageTemplateWidget;
+use Hgabka\PagePartBundle\Helper\HasPagePartsInterface;
+use Hgabka\PagePartBundle\Helper\HasPageTemplateInterface;
+use Hgabka\PagePartBundle\PagePartAdmin\PagePartAdminFactory;
+use Hgabka\PagePartBundle\PagePartConfigurationReader\PagePartConfigurationReaderInterface;
+use Hgabka\PagePartBundle\PageTemplate\PageTemplateConfigurationReaderInterface;
+use Hgabka\PagePartBundle\PageTemplate\PageTemplateConfigurationService;
+use Hgabka\UtilsBundle\Helper\FormWidgets\ListWidget;
+use Hgabka\UtilsBundle\Helper\FormWidgets\Tabs\Tab;
 
 /**
  * NodeListener.
@@ -71,13 +71,13 @@ class NodeListener
             $pageTemplateWidget = new PageTemplateWidget($page, $event->getRequest(), $this->em, $this->pagePartAdminFactory, $this->templateReader, $this->pagePartReader, $this->pageTemplateConfiguratiorService);
 
             // @var Tab $propertiesTab
-            $propertiesTab = $tabPane->getTabByTitle('kuma_node.tab.properties.title');
+            $propertiesTab = $tabPane->getTabByTitle('hg_node.tab.properties.title');
             if (null !== $propertiesTab) {
                 $propertiesWidget = $propertiesTab->getWidget();
                 $tabPane->removeTab($propertiesTab);
-                $tabPane->addTab(new Tab('kuma_pagepart.tab.content.title', new ListWidget([$propertiesWidget, $pageTemplateWidget])), 0);
+                $tabPane->addTab(new Tab('hg_pagepart.tab.content.title', new ListWidget([$propertiesWidget, $pageTemplateWidget])), 0);
             } else {
-                $tabPane->addTab(new Tab('kuma_pagepart.tab.content.title', $pageTemplateWidget), 0);
+                $tabPane->addTab(new Tab('hg_pagepart.tab.content.title', $pageTemplateWidget), 0);
             }
         } elseif ($page instanceof HasPagePartsInterface) {
             // @var HasPagePartsInterface $page
@@ -87,7 +87,7 @@ class NodeListener
                 $pagePartWidget = new PagePartWidget($page, $event->getRequest(), $this->em, $pagePartAdminConfiguration, $this->pagePartAdminFactory);
                 if (0 === $index) {
                     // @var Tab $propertiesTab
-                    $propertiesTab = $tabPane->getTabByTitle('kuma_node.tab.properties.title');
+                    $propertiesTab = $tabPane->getTabByTitle('hg_node.tab.properties.title');
 
                     if (null !== $propertiesTab) {
                         $propertiesWidget = $propertiesTab->getWidget();
@@ -97,7 +97,7 @@ class NodeListener
                         continue;
                     }
                 }
-                $tabPane->addTab(new Tab($pagePartAdminConfiguration->getName(), $pagePartWidget), count($tabPane->getTabs()));
+                $tabPane->addTab(new Tab($pagePartAdminConfiguration->getName(), $pagePartWidget), \count($tabPane->getTabs()));
             }
         }
     }

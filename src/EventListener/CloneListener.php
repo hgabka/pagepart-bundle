@@ -1,14 +1,15 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\EventListener;
+namespace Hgabka\PagePartBundle\EventListener;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
-use Kunstmaan\AdminBundle\Event\DeepCloneAndSaveEvent;
-use Kunstmaan\PagePartBundle\Helper\HasPagePartsInterface;
-use Kunstmaan\PagePartBundle\Helper\HasPageTemplateInterface;
-use Kunstmaan\PagePartBundle\PagePartConfigurationReader\PagePartConfigurationReaderInterface;
-use Kunstmaan\PagePartBundle\PageTemplate\PageTemplateConfigurationService;
+use Hgabka\PagePartBundle\Entity\PagePartRef;
+use Hgabka\PagePartBundle\Helper\HasPagePartsInterface;
+use Hgabka\PagePartBundle\Helper\HasPageTemplateInterface;
+use Hgabka\PagePartBundle\PagePartConfigurationReader\PagePartConfigurationReaderInterface;
+use Hgabka\PagePartBundle\PageTemplate\PageTemplateConfigurationService;
+use Hgabka\UtilsBundle\Event\DeepCloneAndSaveEvent;
 
 /**
  * This event will make sure pageparts are being copied when deepClone is done on an entity implementing hasPagePartsInterface.
@@ -52,7 +53,7 @@ class CloneListener
 
             $contexts = $this->pagePartReader->getPagePartContexts($originalEntity);
             foreach ($contexts as $context) {
-                $this->em->getRepository('KunstmaanPagePartBundle:PagePartRef')->copyPageParts($this->em, $originalEntity, $clonedEntity, $context);
+                $this->em->getRepository(PagePartRef::class)->copyPageParts($this->em, $originalEntity, $clonedEntity, $context);
             }
         }
 

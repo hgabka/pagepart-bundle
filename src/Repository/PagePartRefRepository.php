@@ -1,15 +1,15 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\Repository;
+namespace Hgabka\PagePartBundle\Repository;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
-use Kunstmaan\AdminBundle\Entity\DeepCloneInterface;
-use Kunstmaan\AdminBundle\Entity\EntityInterface;
-use Kunstmaan\PagePartBundle\Entity\PagePartRef;
-use Kunstmaan\PagePartBundle\Helper\HasPagePartsInterface;
-use Kunstmaan\PagePartBundle\Helper\PagePartInterface;
-use Kunstmaan\UtilitiesBundle\Helper\ClassLookup;
+use Hgabka\PagePartBundle\Entity\PagePartRef;
+use Hgabka\PagePartBundle\Helper\HasPagePartsInterface;
+use Hgabka\PagePartBundle\Helper\PagePartInterface;
+use Hgabka\UtilsBundle\Entity\DeepCloneInterface;
+use Hgabka\UtilsBundle\Entity\EntityInterface;
+use Hgabka\UtilsBundle\Helper\ClassLookup;
 
 /**
  * PagePartRefRepository.
@@ -95,8 +95,8 @@ class PagePartRefRepository extends EntityRepository
 
         // Order the pageparts
         usort($pageparts, function (EntityInterface $a, EntityInterface $b) use ($order) {
-            $aPosition = $order[get_class($a).$a->getId()];
-            $bPosition = $order[get_class($b).$b->getId()];
+            $aPosition = $order[\get_class($a).$a->getId()];
+            $bPosition = $order[\get_class($b).$b->getId()];
 
             if ($aPosition < $bPosition) {
                 return -1;
@@ -145,7 +145,7 @@ class PagePartRefRepository extends EntityRepository
         $em = $this->getEntityManager();
         $pageClassname = ClassLookup::getClass($page);
 
-        $sql = 'SELECT COUNT(pp.id) FROM KunstmaanPagePartBundle:PagePartRef pp
+        $sql = 'SELECT COUNT(pp.id) FROM '.PagePartRef::class.' pp
                  WHERE pp.pageEntityname = :pageEntityname
                    AND pp.pageId = :pageId
                    AND pp.pagePartEntityname = :pagePartEntityname
@@ -171,7 +171,7 @@ class PagePartRefRepository extends EntityRepository
         $em = $this->getEntityManager();
         $pageClassname = ClassLookup::getClass($page);
 
-        $sql = 'SELECT COUNT(pp.id) FROM KunstmaanPagePartBundle:PagePartRef pp
+        $sql = 'SELECT COUNT(pp.id) FROM '.PagePartRef::class.' pp
                  WHERE pp.pageEntityname = :pageEntityname
                    AND pp.pageId = :pageId
                    AND pp.context = :context';
