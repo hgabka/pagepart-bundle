@@ -1,15 +1,15 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\Entity;
+namespace Hgabka\PagePartBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Kunstmaan\PagePartBundle\Form\LinkPagePartAdminType;
+use Hgabka\PagePartBundle\Form\LinkPagePartAdminType;
 
 /**
  * LinkPagePart.
  *
  * @ORM\Entity
- * @ORM\Table(name="kuma_link_page_parts")
+ * @ORM\Table(name="hg_page_part_link_page_parts")
  */
 class LinkPagePart extends AbstractPagePart
 {
@@ -101,7 +101,7 @@ class LinkPagePart extends AbstractPagePart
      */
     public function getDefaultView()
     {
-        return 'KunstmaanPagePartBundle:LinkPagePart:view.html.twig';
+        return 'HgabkaPagePartBundle:LinkPagePart:view.html.twig';
     }
 
     /**

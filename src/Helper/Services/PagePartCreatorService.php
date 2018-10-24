@@ -1,20 +1,22 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\Helper\Services;
+namespace Hgabka\PagePartBundle\Helper\Services;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
-use Kunstmaan\AdminBundle\Entity\EntityInterface;
-use Kunstmaan\NodeBundle\Entity\NodeTranslation;
-use Kunstmaan\NodeBundle\Repository\NodeRepository;
-use Kunstmaan\NodeBundle\Repository\NodeTranslationRepository;
-use Kunstmaan\PagePartBundle\Entity\PageTemplateConfiguration;
-use Kunstmaan\PagePartBundle\Helper\HasPagePartsInterface;
-use Kunstmaan\PagePartBundle\Helper\HasPageTemplateInterface;
-use Kunstmaan\PagePartBundle\Helper\PagePartInterface;
-use Kunstmaan\PagePartBundle\Repository\PagePartRefRepository;
-use Kunstmaan\PagePartBundle\Repository\PageTemplateConfigurationRepository;
-use Kunstmaan\UtilitiesBundle\Helper\ClassLookup;
+use Hgabka\NodeBundle\Entity\Node;
+use Hgabka\NodeBundle\Entity\NodeTranslation;
+use Hgabka\NodeBundle\Repository\NodeRepository;
+use Hgabka\NodeBundle\Repository\NodeTranslationRepository;
+use Hgabka\PagePartBundle\Entity\PagePartRef;
+use Hgabka\PagePartBundle\Entity\PageTemplateConfiguration;
+use Hgabka\PagePartBundle\Helper\HasPagePartsInterface;
+use Hgabka\PagePartBundle\Helper\HasPageTemplateInterface;
+use Hgabka\PagePartBundle\Helper\PagePartInterface;
+use Hgabka\PagePartBundle\Repository\PagePartRefRepository;
+use Hgabka\PagePartBundle\Repository\PageTemplateConfigurationRepository;
+use Hgabka\UtilsBundle\Entity\EntityInterface;
+use Hgabka\UtilsBundle\Helper\ClassLookup;
 
 /**
  * A class to facilitate the adding of PageParts to existing pages.
@@ -53,9 +55,9 @@ class PagePartCreatorService
         $this->em = $em;
         // Because these repositories are shared between the different functions it's
         // easier to make them available in the class.
-        $this->pagePartRepo = $em->getRepository('KunstmaanPagePartBundle:PagePartRef');
-        $this->translationRepo = $em->getRepository('KunstmaanNodeBundle:NodeTranslation');
-        $this->nodeRepo = $em->getRepository('KunstmaanNodeBundle:Node');
+        $this->pagePartRepo = $em->getRepository(PagePartRef::class);
+        $this->translationRepo = $em->getRepository(NodeTranslation::class);
+        $this->nodeRepo = $em->getRepository(Node::class);
     }
 
     /**
@@ -97,7 +99,7 @@ class PagePartCreatorService
         // Find latest position.
         if (null === $position) {
             $pageParts = $this->pagePartRepo->getPagePartRefs($page, $context);
-            $position = count($pageParts) + 1;
+            $position = \count($pageParts) + 1;
         }
 
         $this->em->persist($pagePart);
@@ -141,7 +143,7 @@ class PagePartCreatorService
             $instantiatedPageParts[$context] = [];
 
             foreach ($pageParts as $pagePartOrFunction) {
-                if (is_callable($pagePartOrFunction)) {
+                if (\is_callable($pagePartOrFunction)) {
                     $pagePartOrFunction = $pagePartOrFunction();
 
                     if (!isset($pagePartOrFunction) || (null === $pagePartOrFunction)) {
@@ -178,7 +180,7 @@ class PagePartCreatorService
         $page = $translation->getRef($this->em);
 
         /** @var PageTemplateConfigurationRepository $repo */
-        $repo = $this->em->getRepository('KunstmaanPagePartBundle:PageTemplateConfiguration');
+        $repo = $this->em->getRepository(PageTemplateConfiguration::class);
         $pageTemplateConfiguration = $repo->findFor($page);
         if ($pageTemplateConfiguration) {
             $pageTemplateConfiguration->setPageTemplate($templateName);
@@ -212,7 +214,7 @@ class PagePartCreatorService
 
             if (null !== $setters) {
                 foreach ($setters as $setter => $value) {
-                    call_user_func([$pp, $setter], $value);
+                    \call_user_func([$pp, $setter], $value);
                 }
             }
 
@@ -227,7 +229,7 @@ class PagePartCreatorService
      */
     private function getNode($nodeOrInternalName)
     {
-        if (is_string($nodeOrInternalName)) {
+        if (\is_string($nodeOrInternalName)) {
             return $this->nodeRepo->findOneBy(['internalName' => $nodeOrInternalName]);
         }
 

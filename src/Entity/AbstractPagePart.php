@@ -1,16 +1,42 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\Entity;
+namespace Hgabka\PagePartBundle\Entity;
 
-use Kunstmaan\AdminBundle\Entity\AbstractEntity;
-use Kunstmaan\PagePartBundle\Helper\HasPagePartsInterface;
-use Kunstmaan\PagePartBundle\Helper\PagePartInterface;
+use Hgabka\PagePartBundle\Helper\HasPagePartsInterface;
+use Hgabka\PagePartBundle\Helper\PagePartInterface;
 
 /**
  * Abstract ORM Pagepart.
  */
-abstract class AbstractPagePart extends AbstractEntity implements PagePartInterface
+abstract class AbstractPagePart implements PagePartInterface
 {
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer", name="id")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     *
+     * @return AbstractPagePart
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
     /**
      * In most cases, the backend view will not differ from the default one.
      * Also, this implementation guarantees backwards compatibility.

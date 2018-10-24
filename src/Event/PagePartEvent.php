@@ -1,8 +1,8 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\Event;
+namespace Hgabka\PagePartBundle\Event;
 
-use Kunstmaan\PagePartBundle\Helper\PagePartInterface;
+use Hgabka\PagePartBundle\Helper\PagePartInterface;
 use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\HttpFoundation\Response;
 

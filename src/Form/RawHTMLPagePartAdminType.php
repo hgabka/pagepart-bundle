@@ -1,7 +1,8 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\Form;
+namespace Hgabka\PagePartBundle\Form;
 
+use Hgabka\PagePartBundle\Entity\RawHTMLPagePart;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -33,7 +34,7 @@ class RawHTMLPagePartAdminType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'kunstmaan_pagepartbundle_rawhtmlpageparttype';
+        return 'hgabka_pagepartbundle_rawhtmlpageparttype';
     }
 
     /**
@@ -42,7 +43,7 @@ class RawHTMLPagePartAdminType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'Kunstmaan\PagePartBundle\Entity\RawHTMLPagePart',
+            'data_class' => RawHTMLPagePart::class,
         ]);
     }
 }

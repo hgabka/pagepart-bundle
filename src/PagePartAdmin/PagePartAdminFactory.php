@@ -1,9 +1,9 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\PagePartAdmin;
+namespace Hgabka\PagePartBundle\PagePartAdmin;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Kunstmaan\PagePartBundle\Helper\HasPagePartsInterface;
+use Hgabka\PagePartBundle\Helper\HasPagePartsInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**

@@ -1,8 +1,8 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\PageTemplate;
+namespace Hgabka\PagePartBundle\PageTemplate;
 
-use Kunstmaan\PagePartBundle\Helper\HasPageTemplateInterface;
+use Hgabka\PagePartBundle\Helper\HasPageTemplateInterface;
 
 interface PageTemplateConfigurationReaderInterface
 {

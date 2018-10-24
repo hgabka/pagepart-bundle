@@ -1,15 +1,15 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\Entity;
+namespace Hgabka\PagePartBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Kunstmaan\PagePartBundle\Form\ToTopPagePartAdminType;
+use Hgabka\PagePartBundle\Form\ToTopPagePartAdminType;
 
 /**
  * ToTopPagePart.
  *
  * @ORM\Entity
- * @ORM\Table(name="kuma_to_top_page_parts")
+ * @ORM\Table(name="hg_page_part_to_top_page_parts")
  */
 class ToTopPagePart extends AbstractPagePart
 {
@@ -26,7 +26,7 @@ class ToTopPagePart extends AbstractPagePart
      */
     public function getDefaultView()
     {
-        return 'KunstmaanPagePartBundle:ToTopPagePart:view.html.twig';
+        return 'HgabkaPagePartBundle:ToTopPagePart:view.html.twig';
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\DependencyInjection;
+namespace Hgabka\PagePartBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\NodeDefinition;
@@ -20,7 +20,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $root = $treeBuilder->root('kunstmaan_page_part');
+        $root = $treeBuilder->root('hgabka_page_part');
         $root->children()
             ->booleanNode('extended_pagepart_chooser')
                 ->defaultFalse()
@@ -61,7 +61,7 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('span')->defaultValue(12)->end()
                 ->scalarNode('template')->end()
                 ->variableNode('rows')
-                    ->validate()->ifTrue(function ($element) { return !is_array($element); })->thenInvalid('The rows element must be an array.')->end()
+                    ->validate()->ifTrue(function ($element) { return !\is_array($element); })->thenInvalid('The rows element must be an array.')->end()
                     ->validate()->always(function ($children) {
                         array_walk($children, [$this, 'evaluateRows']);
 
@@ -119,7 +119,7 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('name')->isRequired()->end()
                 ->scalarNode('span')->defaultValue(12)->end()
                 ->variableNode('rows')
-                    ->validate()->ifTrue(function ($element) { return !is_array($element); })->thenInvalid('The rows element must be an array.')->end()
+                    ->validate()->ifTrue(function ($element) { return !\is_array($element); })->thenInvalid('The rows element must be an array.')->end()
                     ->validate()->always(function ($children) {
                         array_walk($children, [$this, 'evaluateRows']);
 

@@ -1,7 +1,8 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\Form;
+namespace Hgabka\PagePartBundle\Form;
 
+use Hgabka\PagePartBundle\Entity\TocPagePart;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -24,7 +25,7 @@ class TocPagePartAdminType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'kunstmaan_pagepartbundle_tocpageparttype';
+        return 'hgabka_pagepartbundle_tocpageparttype';
     }
 
     /**
@@ -33,7 +34,7 @@ class TocPagePartAdminType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'Kunstmaan\PagePartBundle\Entity\TocPagePart',
+            'data_class' => TocPagePart::class,
         ]);
     }
 }

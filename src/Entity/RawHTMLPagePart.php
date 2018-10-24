@@ -1,15 +1,15 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\Entity;
+namespace Hgabka\PagePartBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Kunstmaan\PagePartBundle\Form\RawHTMLPagePartAdminType;
+use Hgabka\PagePartBundle\Form\RawHTMLPagePartAdminType;
 
 /**
  * Class that defines a raw html page part object to add to a page.
  *
  * @ORM\Entity
- * @ORM\Table(name="kuma_raw_html_page_parts")
+ * @ORM\Table(name="hg_page_part_raw_html_page_parts")
  */
 class RawHTMLPagePart extends AbstractPagePart
 {
@@ -51,7 +51,7 @@ class RawHTMLPagePart extends AbstractPagePart
      */
     public function getDefaultView()
     {
-        return 'KunstmaanPagePartBundle:RawHTMLPagePart:view.html.twig';
+        return 'HgabkaPagePartBundle:RawHTMLPagePart:view.html.twig';
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\PageTemplate;
+namespace Hgabka\PagePartBundle\PageTemplate;
 
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Yaml\Yaml;

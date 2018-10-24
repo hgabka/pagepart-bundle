@@ -1,15 +1,15 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\Entity;
+namespace Hgabka\PagePartBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Kunstmaan\PagePartBundle\Form\TextPagePartAdminType;
+use Hgabka\PagePartBundle\Form\TextPagePartAdminType;
 
 /**
  * Class that defines a text page part object to add to a page.
  *
  * @ORM\Entity
- * @ORM\Table(name="kuma_text_page_parts")
+ * @ORM\Table(name="hg_page_part_text_page_parts")
  */
 class TextPagePart extends AbstractPagePart
 {
@@ -51,7 +51,7 @@ class TextPagePart extends AbstractPagePart
      */
     public function getDefaultView()
     {
-        return 'KunstmaanPagePartBundle:TextPagePart:view.html.twig';
+        return 'HgabkaPagePartBundle:TextPagePart:view.html.twig';
     }
 
     /**

@@ -1,9 +1,9 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\Entity;
+namespace Hgabka\PagePartBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Kunstmaan\PagePartBundle\Form\HeaderPagePartAdminType;
+use Hgabka\PagePartBundle\Form\HeaderPagePartAdminType;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 
@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Mapping\ClassMetadata;
  * Class that defines a header page part object to add to a page.
  *
  * @ORM\Entity
- * @ORM\Table(name="kuma_header_page_parts")
+ * @ORM\Table(name="hg_page_part_header_page_parts")
  */
 class HeaderPagePart extends AbstractPagePart
 {
@@ -91,7 +91,7 @@ class HeaderPagePart extends AbstractPagePart
      */
     public function getDefaultView()
     {
-        return 'KunstmaanPagePartBundle:HeaderPagePart:view.html.twig';
+        return 'HgabkaPagePartBundle:HeaderPagePart:view.html.twig';
     }
 
     /**

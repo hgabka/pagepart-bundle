@@ -1,21 +1,21 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\Helper\FormWidgets;
+namespace Hgabka\PagePartBundle\Helper\FormWidgets;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
-use Kunstmaan\AdminBundle\Helper\FormWidgets\FormWidget;
-use Kunstmaan\NodeBundle\Entity\PageInterface;
-use Kunstmaan\PagePartBundle\Entity\PageTemplateConfiguration;
-use Kunstmaan\PagePartBundle\Helper\HasPageTemplateInterface;
-use Kunstmaan\PagePartBundle\PagePartAdmin\PagePartAdmin;
-use Kunstmaan\PagePartBundle\PagePartAdmin\PagePartAdminConfiguratorInterface;
-use Kunstmaan\PagePartBundle\PagePartAdmin\PagePartAdminFactory;
-use Kunstmaan\PagePartBundle\PagePartConfigurationReader\PagePartConfigurationReaderInterface;
-use Kunstmaan\PagePartBundle\PageTemplate\PageTemplateConfigurationReaderInterface;
-use Kunstmaan\PagePartBundle\PageTemplate\PageTemplateConfigurationService;
-use Kunstmaan\PagePartBundle\PageTemplate\PageTemplateInterface;
-use Kunstmaan\PagePartBundle\PageTemplate\Region;
+use Hgabka\NodeBundle\Entity\PageInterface;
+use Hgabka\PagePartBundle\Entity\PageTemplateConfiguration;
+use Hgabka\PagePartBundle\Helper\HasPageTemplateInterface;
+use Hgabka\PagePartBundle\PagePartAdmin\PagePartAdmin;
+use Hgabka\PagePartBundle\PagePartAdmin\PagePartAdminConfiguratorInterface;
+use Hgabka\PagePartBundle\PagePartAdmin\PagePartAdminFactory;
+use Hgabka\PagePartBundle\PagePartConfigurationReader\PagePartConfigurationReaderInterface;
+use Hgabka\PagePartBundle\PageTemplate\PageTemplateConfigurationReaderInterface;
+use Hgabka\PagePartBundle\PageTemplate\PageTemplateConfigurationService;
+use Hgabka\PagePartBundle\PageTemplate\Region;
+use Hgabka\UtilsBundle\Helper\FormWidgets\FormWidget;
+use HgabkaHgabka\PagePartBundle\PageTemplate\PageTemplateInterface;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\HttpFoundation\Request;
@@ -179,7 +179,7 @@ class PageTemplateWidget extends FormWidget
      */
     public function getTemplate()
     {
-        return 'KunstmaanPagePartBundle:FormWidgets\PageTemplateWidget:widget.html.twig';
+        return 'HgabkaPagePartBundle:FormWidgets\PageTemplateWidget:widget.html.twig';
     }
 
     /**
@@ -211,7 +211,7 @@ class PageTemplateWidget extends FormWidget
      */
     private function processRegion($region)
     {
-        if (count($region->getChildren())) {
+        if (\count($region->getChildren())) {
             foreach ($region->getChildren() as $child) {
                 $this->processRegion($child);
             }

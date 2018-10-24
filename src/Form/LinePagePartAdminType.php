@@ -1,7 +1,8 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\Form;
+namespace Hgabka\PagePartBundle\Form;
 
+use Hgabka\PagePartBundle\Entity\LinePagePart;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -24,7 +25,7 @@ class LinePagePartAdminType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'kunstmaan_pagepartbundle_linepageparttype';
+        return 'hgabka_pagepartbundle_linepageparttype';
     }
 
     /**
@@ -34,7 +35,7 @@ class LinePagePartAdminType extends AbstractType
     {
         $resolver->setDefaults(
           [
-            'data_class' => 'Kunstmaan\PagePartBundle\Entity\LinePagePart',
+            'data_class' => LinePagePart::class,
           ]
         );
     }

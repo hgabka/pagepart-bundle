@@ -1,4 +1,4 @@
-KunstmaanMediaBundle_pagepartadmin:
+HgabkaPagePartBundle_pagepartadmin:
     resource: '@KunstmaanPagePartBundle/Controller/PagePartAdminController.php'
     type:     annotation
     prefix:   /admin

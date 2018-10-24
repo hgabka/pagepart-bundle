@@ -1,15 +1,15 @@
 <?php
 
-namespace Kunstmaan\PagePartBundle\Entity;
+namespace Hgabka\PagePartBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Kunstmaan\PagePartBundle\Form\TocPagePartAdminType;
+use Hgabka\PagePartBundle\Form\TocPagePartAdminType;
 
 /**
  * TocPagePart.
  *
  * @ORM\Entity
- * @ORM\Table(name="kuma_toc_page_parts")
+ * @ORM\Table(name="hg_page_part_toc_page_parts")
  */
 class TocPagePart extends AbstractPagePart
 {
@@ -26,7 +26,7 @@ class TocPagePart extends AbstractPagePart
      */
     public function getDefaultView()
     {
-        return 'KunstmaanPagePartBundle:TocPagePart:view.html.twig';
+        return 'HgabkaPagePartBundle:TocPagePart:view.html.twig';
     }
 
     /**
