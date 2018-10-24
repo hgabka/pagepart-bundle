@@ -1,0 +1,43 @@
+{
+    "name": "hgabka/pagepart-bundle",
+    "type": "Symfony bundle",
+    "description": "Pagepart bundle",
+    "keywords": [
+    ],
+    "homepage": "https://github.com/hgabka/pagepart-bundle",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Gabe",
+            "email": "hgabka@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php" : "~7.2",
+        "symfony/framework-bundle": "^4.1",
+        "hgabka/utils-bundle": "^4.0",
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "4.*",
+        "mockery/mockery": "^0.9.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hgabka\\PagePartBundle\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Hgabka\\PagePartBundle\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
