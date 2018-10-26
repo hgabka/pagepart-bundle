@@ -118,11 +118,11 @@ class PageTemplateConfigurationParser implements PageTemplateConfigurationParser
         }
 
         if (false === strpos($name, ':')) {
-            throw new \Exception(sprintf('Malformed namespaced configuration name "%s" (expecting "namespace:pagename").', $name));
+            $path = $this->kernel->getRootDir().'/../config/pagetemplates/'.$name.'.yml';
+        } else {
+            list($namespace, $name) = explode(':', $name, 2);
+            $path = $this->kernel->locateResource('@'.$namespace.'/Resources/config/pagetemplates/'.$name.'.yml');
         }
-
-        list($namespace, $name) = explode(':', $name, 2);
-        $path = $this->kernel->locateResource('@'.$namespace.'/Resources/config/pagetemplates/'.$name.'.yml');
         $rawData = Yaml::parse(file_get_contents($path));
 
         return $rawData;

@@ -107,14 +107,11 @@ class PagePartConfigurationParser implements PagePartConfigurationParserInterfac
 
         $nameParts = explode(':', $name);
         if (2 !== \count($nameParts)) {
-            throw new \Exception(sprintf(
-                'Malformed namespaced configuration name "%s" (expecting "namespace:pagename").',
-                $name
-            ));
+            $path = $this->kernel->getRootDir().'/../config/pageparts/'.$name.'.yml';
+        } else {
+            list($namespace, $name) = $nameParts;
+            $path = $this->kernel->locateResource('@'.$namespace.'/Resources/config/pageparts/'.$name.'.yml');
         }
-
-        list($namespace, $name) = $nameParts;
-        $path = $this->kernel->locateResource('@'.$namespace.'/Resources/config/pageparts/'.$name.'.yml');
         $value = Yaml::parse(file_get_contents($path));
 
         return $value;
