@@ -3,6 +3,7 @@
 namespace Hgabka\PagePartBundle\Twig\Extension;
 
 use Doctrine\ORM\EntityManager;
+use Hgabka\PagePartBundle\Entity\PagePartRef;
 use Hgabka\PagePartBundle\Helper\HasPagePartsInterface;
 use Hgabka\PagePartBundle\Helper\PagePartInterface;
 use Hgabka\PagePartBundle\Repository\PagePartRefRepository;
@@ -47,7 +48,7 @@ class PagePartTwigExtension extends \Twig_Extension
      */
     public function renderPageParts(\Twig_Environment $env, array $twigContext, HasPagePartsInterface $page, $contextName = 'main', array $parameters = [])
     {
-        $template = $env->loadTemplate('HgabkaPagePartBundle:PagePartTwigExtension:widget.html.twig');
+        $template = $env->loadTemplate('@HgabkaPagePart/PagePartTwigExtension/widget.html.twig');
         // @var $entityRepository PagePartRefRepository
         $pageparts = $this->getPageParts($page, $contextName);
         $newTwigContext = array_merge($parameters, [
@@ -68,7 +69,7 @@ class PagePartTwigExtension extends \Twig_Extension
     public function getPageParts(HasPagePartsInterface $page, $context = 'main')
     {
         // @var $entityRepository PagePartRefRepository
-        $entityRepository = $this->em->getRepository('KunstmaanPagePartBundle:PagePartRef');
+        $entityRepository = $this->em->getRepository(PagePartRef::class);
         $pageparts = $entityRepository->getPageParts($page, $context);
 
         return $pageparts;
