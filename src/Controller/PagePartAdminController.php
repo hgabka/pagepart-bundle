@@ -6,7 +6,6 @@ use Hgabka\PagePartBundle\Helper\HasPagePartsInterface;
 use Hgabka\PagePartBundle\Helper\PagePartInterface;
 use Hgabka\PagePartBundle\PagePartAdmin\PagePartAdmin;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,8 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
 class PagePartAdminController extends Controller
 {
     /**
-     * @Route("/newPagePart", name="KunstmaanPagePartBundle_admin_newpagepart")
-     * @Template("HgabkaPagePartBundle:PagePartAdminTwigExtension:pagepart.html.twig")
+     * @Route("/newPagePart", name="HgabkaPagePartBundle_admin_newpagepart")
      *
      * @param \Symfony\Component\HttpFoundation\Request $request
      *
@@ -79,7 +77,7 @@ class PagePartAdminController extends Controller
         $formview = $form->createView();
         $extended = $this->getParameter('hgabka_page_part.extended');
 
-        return [
+        return $this->render('@HgabkaPagePart/PagePartAdminTwigExtension/pagepart.html.twig', [
             'id' => $id,
             'form' => $formview,
             'pagepart' => $pagePart,
@@ -87,6 +85,6 @@ class PagePartAdminController extends Controller
             'page' => $pagePartAdmin->getPage(),
             'editmode' => true,
             'extended' => $extended,
-        ];
+        ]);
     }
 }

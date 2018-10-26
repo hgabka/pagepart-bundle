@@ -2,19 +2,19 @@
 
     {% if pagepartadmin.possiblePagePartTypes | length > 0 %}
         <!-- First New PP select -->
-        {% include '@KunstmaanPagePart/PagePartAdminTwigExtension/add_pagepart.html.twig' with {first: true} %}
+        {% include '@HgabkaPagePart/PagePartAdminTwigExtension/add_pagepart.html.twig' with {first: true} %}
     {% endif %}
 
     <!-- Sortable container -->
     <div id="parts-{{ pagepartadmin.context }}" class="js-sortable-container sortable-container" data-scope="{% spaceless %}{% for type in pagepartadmin.possiblePagePartTypes %}{{ type.class|replace({'\\':""})~' ' }}{% endfor %}{% endspaceless %}">
         {% for id, pagepart in pagepartadmin.pagepartmap %}
-            {% include '@KunstmaanPagePart/PagePartAdminTwigExtension/pagepart.html.twig' with { 'id': id, 'pagepartadmin': pagepartadmin, 'editmode': false} %}
+            {% include '@HgabkaPagePart/PagePartAdminTwigExtension/pagepart.html.twig' with { 'id': id, 'pagepartadmin': pagepartadmin, 'editmode': false} %}
         {% endfor %}
     </div>
 </div>
 
 {% if extended is defined and extended == true %}
-    {% include '@KunstmaanPagePart/PagePartAdminTwigExtension/modal.html.twig' with { 'pagepartadmin': pagepartadmin } %}
+    {% include '@HgabkaPagePart/PagePartAdminTwigExtension/modal.html.twig' with { 'pagepartadmin': pagepartadmin } %}
 {% endif %}
 
 <div id="pageparts-deleted-container"></div>
