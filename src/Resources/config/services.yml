@@ -11,9 +11,12 @@ services:
     hgabka_pagepart.pageparts:
         class: 'Hgabka\PagePartBundle\PagePartAdmin\Builder'
 
-    hgabka_page_part.page_part_configuration_reader:
-        class: '%hgabka_pagepart.page_part_configuration_reader.class%'
+    Hgabka\PagePartBundle\PagePartConfigurationReader\PagePartConfigurationReader:
+        public: true
         arguments: [ '@hgabka_page_part.page_part_configuration_parser' ]
+
+    hgabka_page_part.page_part_configuration_reader:
+        alias: Hgabka\PagePartBundle\PagePartConfigurationReader\PagePartConfigurationReader
 
     hgabka_page_part.page_part_configuration_parser:
         class: '%hgabka_pagepart.page_part_configuration_parser.class%'

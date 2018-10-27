@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Reference between a page and a pagepart.
  *
  * @ORM\Entity(repositoryClass="Hgabka\PagePartBundle\Repository\PagePartRefRepository")
- * @ORM\Table(name="hg_page_part_page_part_refs", indexes={@ORM\Index(name="idx_page_part_search", columns={"pageId", "pageEntityname", "context"})})
+ * @ORM\Table(name="hg_page_part_page_part_refs", indexes={@ORM\Index(name="idx_page_part_search", columns={"page_id", "page_entityname", "context"})})
  * @ORM\HasLifecycleCallbacks()
  */
 class PagePartRef

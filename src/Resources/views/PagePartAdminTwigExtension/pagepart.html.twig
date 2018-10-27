@@ -1,9 +1,10 @@
-{% form_theme form '@KunstmaanAdmin/Form/fields.html.twig' %}
+{% form_theme form '@HgabkaUtils/Form/fields.html.twig' %}
 {% set context = pagepartadmin.context %}
 
 <!-- Hidden Field - Deleted -->
+<label class="btn" style="display:none">
 <input type="checkbox" class="deletefield hidden" id="{{ id }}-is-deleted" name="{{ id }}_deleted" value="true">
-
+</label>
 
 <!-- Draggable Item -->
 <div class="js-sortable-item sortable-item" id="{{ id }}-pp-container" data-scope="{{ pagepartadmin.getClassName(pagepart)|replace({'\\':""}) }}">
@@ -77,7 +78,7 @@
 
     {% if pagepartadmin.possiblePagePartTypes | length > 0 %}
         <!-- New PP select -->
-        {% include '@KunstmaanPagePart/PagePartAdminTwigExtension/add_pagepart.html.twig' %}
+        {% include '@HgabkaPagePart/PagePartAdminTwigExtension/add_pagepart.html.twig' %}
     {% endif %}
 
 
