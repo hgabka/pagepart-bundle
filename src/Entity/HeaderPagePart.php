@@ -91,7 +91,7 @@ class HeaderPagePart extends AbstractPagePart
      */
     public function getDefaultView()
     {
-        return 'HgabkaPagePartBundle:HeaderPagePart:view.html.twig';
+        return '@HgabkaPagePart/HeaderPagePart/view.html.twig';
     }
 
     /**

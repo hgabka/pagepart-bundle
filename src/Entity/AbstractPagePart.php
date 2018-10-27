@@ -2,6 +2,7 @@
 
 namespace Hgabka\PagePartBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 use Hgabka\PagePartBundle\Helper\HasPagePartsInterface;
 use Hgabka\PagePartBundle\Helper\PagePartInterface;
 

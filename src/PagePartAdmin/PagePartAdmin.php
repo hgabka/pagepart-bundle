@@ -10,8 +10,8 @@ use Hgabka\PagePartBundle\Event\PagePartEvent;
 use Hgabka\PagePartBundle\Helper\HasPagePartsInterface;
 use Hgabka\PagePartBundle\Helper\PagePartInterface;
 use Hgabka\PagePartBundle\Repository\PagePartRefRepository;
-use Hgabka\UtilitiesBundle\Helper\ClassLookup;
 use Hgabka\UtilsBundle\Entity\EntityInterface;
+use Hgabka\UtilsBundle\Helper\ClassLookup;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -217,7 +217,8 @@ class PagePartAdmin
 
         // Add new pageparts on the correct position + Re-order and save pageparts if needed
         $sequences = $request->get($this->context.'_sequence');
-        $sequencescount = \count($sequences);
+
+        $sequencescount = $sequences ? \count($sequences) : 0;
         for ($i = 0; $i < $sequencescount; ++$i) {
             $pagePartRefId = $sequences[$i];
 
@@ -376,7 +377,7 @@ class PagePartAdmin
         foreach ($this->pagePartRefs as $pagePartRef) {
             foreach ($pageParts as $key => $pagePart) {
                 if (ClassLookup::getClass($pagePart) === $pagePartRef->getPagePartEntityname()
-                    && $pagePart->getId() === $pagePartRef->getPagePartId()
+                    && (int) $pagePart->getId() === (int) $pagePartRef->getPagePartId()
                 ) {
                     $this->pageParts[$pagePartRef->getId()] = $pagePart;
                     unset($pageParts[$key]);

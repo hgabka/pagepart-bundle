@@ -2,8 +2,8 @@
 
 namespace Hgabka\PagePartBundle\Form;
 
-use Hgabka\AdminBundle\Form\WysiwygType;
 use Hgabka\PagePartBundle\Entity\TextPagePart;
+use Hgabka\UtilsBundle\Form\WysiwygType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -22,6 +22,9 @@ class TextPagePartAdminType extends AbstractType
         $builder->add('content', WysiwygType::class, [
             'label' => 'pagepart.text.content',
             'required' => false,
+            'attr' => [
+                'class' => 'form-control',
+            ],
         ]);
     }
 

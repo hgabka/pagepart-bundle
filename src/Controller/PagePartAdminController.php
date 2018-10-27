@@ -5,6 +5,7 @@ namespace Hgabka\PagePartBundle\Controller;
 use Hgabka\PagePartBundle\Helper\HasPagePartsInterface;
 use Hgabka\PagePartBundle\Helper\PagePartInterface;
 use Hgabka\PagePartBundle\PagePartAdmin\PagePartAdmin;
+use Hgabka\PagePartBundle\PagePartConfigurationReader\PagePartConfigurationReader;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
@@ -38,7 +39,7 @@ class PagePartAdminController extends Controller
             throw new \RuntimeException(sprintf('Given page (%s:%d) has no pageparts', $pageClassName, $pageId));
         }
 
-        $pagePartConfigurationReader = $this->container->get('hgabka_page_part.page_part_configuration_reader');
+        $pagePartConfigurationReader = $this->container->get(PagePartConfigurationReader::class);
         $pagePartAdminConfigurators = $pagePartConfigurationReader->getPagePartAdminConfigurators($page);
 
         $pagePartAdminConfigurator = null;
