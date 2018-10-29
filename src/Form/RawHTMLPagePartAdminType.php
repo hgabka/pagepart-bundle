@@ -3,7 +3,6 @@
 namespace Hgabka\PagePartBundle\Form;
 
 use Hgabka\PagePartBundle\Entity\RawHTMLPagePart;
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -11,7 +10,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 /**
  * class to add content to a raw html pagepart.
  */
-class RawHTMLPagePartAdminType extends AbstractType
+class RawHTMLPagePartAdminType extends AbstractPagePartAdminType
 {
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
@@ -42,6 +41,7 @@ class RawHTMLPagePartAdminType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
+        parent::configureOptions($resolver);
         $resolver->setDefaults([
             'data_class' => RawHTMLPagePart::class,
         ]);

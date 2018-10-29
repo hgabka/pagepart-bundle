@@ -4,14 +4,13 @@ namespace Hgabka\PagePartBundle\Form;
 
 use Hgabka\PagePartBundle\Entity\TextPagePart;
 use Hgabka\UtilsBundle\Form\WysiwygType;
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * TextPagePartAdminType.
  */
-class TextPagePartAdminType extends AbstractType
+class TextPagePartAdminType extends AbstractPagePartAdminType
 {
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
@@ -19,13 +18,20 @@ class TextPagePartAdminType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('content', WysiwygType::class, [
+        $params = [
             'label' => 'pagepart.text.content',
             'required' => false,
             'attr' => [
                 'class' => 'form-control',
             ],
-        ]);
+        ];
+        if (isset($options['config']['editorCss'])) {
+            $params['config'] = [
+                'contentsCss' => $options['config']['editorCss'],
+            ];
+        }
+
+        $builder->add('content', WysiwygType::class, $params);
     }
 
     /**
@@ -41,6 +47,7 @@ class TextPagePartAdminType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
+        parent::configureOptions($resolver);
         $resolver->setDefaults([
             'data_class' => TextPagePart::class,
         ]);

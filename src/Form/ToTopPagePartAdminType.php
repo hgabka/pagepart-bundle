@@ -3,14 +3,13 @@
 namespace Hgabka\PagePartBundle\Form;
 
 use Hgabka\PagePartBundle\Entity\ToTopPagePart;
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * ToTopPagePartAdminType.
  */
-class ToTopPagePartAdminType extends AbstractType
+class ToTopPagePartAdminType extends AbstractPagePartAdminType
 {
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
@@ -33,6 +32,7 @@ class ToTopPagePartAdminType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
+        parent::configureOptions($resolver);
         $resolver->setDefaults([
             'data_class' => ToTopPagePart::class,
         ]);

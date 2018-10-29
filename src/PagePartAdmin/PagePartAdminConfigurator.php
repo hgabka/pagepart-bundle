@@ -33,6 +33,11 @@ class PagePartAdminConfigurator extends AbstractPagePartAdminConfigurator
     protected $widgetTemplate;
 
     /**
+     * @var array
+     */
+    protected $config;
+
+    /**
      * @return array
      */
     public function getPossiblePagePartTypes()
@@ -110,5 +115,25 @@ class PagePartAdminConfigurator extends AbstractPagePartAdminConfigurator
     public function setWidgetTemplate($widgetTemplate)
     {
         $this->widgetTemplate = $widgetTemplate;
+    }
+
+    /**
+     * @return array
+     */
+    public function getConfig()
+    {
+        return $this->config;
+    }
+
+    /**
+     * @param array $config
+     *
+     * @return PagePartAdminConfigurator
+     */
+    public function setConfig($config)
+    {
+        $this->config = $config;
+
+        return $this;
     }
 }

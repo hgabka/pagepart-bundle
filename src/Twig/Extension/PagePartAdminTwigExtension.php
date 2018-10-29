@@ -45,7 +45,7 @@ class PagePartAdminTwigExtension extends \Twig_Extension
     public function renderWidget(\Twig_Environment $env, PagePartAdmin $ppAdmin, $form = null, array $parameters = [], $templateName = null)
     {
         if (null === $templateName) {
-            $templateName = 'HgabkaPagePartBundle:PagePartAdminTwigExtension:widget.html.twig';
+            $templateName = '@HgabkaPagePart/PagePartAdminTwigExtension/widget.html.twig';
         }
 
         $template = $env->loadTemplate($templateName);
@@ -55,6 +55,7 @@ class PagePartAdminTwigExtension extends \Twig_Extension
             'page' => $ppAdmin->getPage(),
             'form' => $form,
             'extended' => $this->usesExtendedPagePartChooser,
+            'config' => $ppAdmin->getConfig(),
         ]));
     }
 

@@ -3,14 +3,13 @@
 namespace Hgabka\PagePartBundle\Form;
 
 use Hgabka\PagePartBundle\Entity\TocPagePart;
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * TocPagePartAdminType.
  */
-class TocPagePartAdminType extends AbstractType
+class TocPagePartAdminType extends AbstractPagePartAdminType
 {
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
@@ -33,6 +32,7 @@ class TocPagePartAdminType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
+        parent::configureOptions($resolver);
         $resolver->setDefaults([
             'data_class' => TocPagePart::class,
         ]);
