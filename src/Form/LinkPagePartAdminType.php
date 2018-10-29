@@ -4,7 +4,6 @@ namespace Hgabka\PagePartBundle\Form;
 
 use Hgabka\NodeBundle\Form\Type\URLChooserType;
 use Hgabka\PagePartBundle\Entity\LinkPagePart;
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -13,7 +12,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 /**
  * LinkPagePartAdminType.
  */
-class LinkPagePartAdminType extends AbstractType
+class LinkPagePartAdminType extends AbstractPagePartAdminType
 {
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
@@ -49,6 +48,7 @@ class LinkPagePartAdminType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
+        parent::configureOptions($resolver);
         $resolver->setDefaults([
             'data_class' => LinkPagePart::class,
         ]);

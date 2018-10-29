@@ -89,6 +89,7 @@ class PagePartConfigurationParser implements PagePartConfigurationParserInterfac
         $result->setInternalName($name);
         $result->setPossiblePagePartTypes(array_values($types));
         $result->setContext($value['context']);
+        $result->setConfig($value['config'] ?? null);
 
         if (isset($value['widget_template'])) {
             $result->setWidgetTemplate($value['widget_template']);

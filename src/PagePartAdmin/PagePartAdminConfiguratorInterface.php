@@ -22,5 +22,10 @@ interface PagePartAdminConfiguratorInterface
     /**
      * @return string
      */
+    public function getConfig();
+
+    /**
+     * @return string
+     */
     public function getWidgetTemplate();
 }

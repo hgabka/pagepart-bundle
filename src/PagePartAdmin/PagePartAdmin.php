@@ -196,12 +196,12 @@ class PagePartAdmin
 
         foreach ($this->pageParts as $pagePartRefId => $pagePart) {
             $data['pagepartadmin_'.$pagePartRefId] = $pagePart;
-            $formbuilder->add('pagepartadmin_'.$pagePartRefId, $pagePart->getDefaultAdminType());
+            $formbuilder->add('pagepartadmin_'.$pagePartRefId, $pagePart->getDefaultAdminType(), ['config' => $this->getConfig()]);
         }
 
         foreach ($this->newPageParts as $newPagePartRefId => $newPagePart) {
             $data['pagepartadmin_'.$newPagePartRefId] = $newPagePart;
-            $formbuilder->add('pagepartadmin_'.$newPagePartRefId, $newPagePart->getDefaultAdminType());
+            $formbuilder->add('pagepartadmin_'.$newPagePartRefId, $newPagePart->getDefaultAdminType(), ['config' => $this->getConfig()]);
         }
 
         $formbuilder->setData($data);
@@ -297,6 +297,14 @@ class PagePartAdmin
     public function getName()
     {
         return $this->configurator->getName();
+    }
+
+    /**
+     * @return string
+     */
+    public function getConfig()
+    {
+        return $this->configurator->getConfig();
     }
 
     /**

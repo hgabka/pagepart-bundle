@@ -3,14 +3,13 @@
 namespace Hgabka\PagePartBundle\Form;
 
 use Hgabka\PagePartBundle\Entity\LinePagePart;
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * LinePagePartAdminType.
  */
-class LinePagePartAdminType extends AbstractType
+class LinePagePartAdminType extends AbstractPagePartAdminType
 {
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
@@ -33,6 +32,7 @@ class LinePagePartAdminType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
+        parent::configureOptions($resolver);
         $resolver->setDefaults(
           [
             'data_class' => LinePagePart::class,
