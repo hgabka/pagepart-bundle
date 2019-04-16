@@ -108,7 +108,7 @@ class PagePartConfigurationParser implements PagePartConfigurationParserInterfac
 
         $nameParts = explode(':', $name);
         if (2 !== \count($nameParts)) {
-            $path = $this->kernel->getRootDir().'/../config/pageparts/'.$name.'.yml';
+            $path = $this->kernel->getProjectDir().'/config/pageparts/'.$name.'.yml';
         } else {
             list($namespace, $name) = $nameParts;
             $path = $this->kernel->locateResource('@'.$namespace.'/Resources/config/pageparts/'.$name.'.yml');

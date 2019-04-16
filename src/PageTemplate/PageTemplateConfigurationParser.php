@@ -118,7 +118,7 @@ class PageTemplateConfigurationParser implements PageTemplateConfigurationParser
         }
 
         if (false === strpos($name, ':')) {
-            $path = $this->kernel->getRootDir().'/../config/pagetemplates/'.$name.'.yml';
+            $path = $this->kernel->getProjectDir().'/config/pagetemplates/'.$name.'.yml';
         } else {
             list($namespace, $name) = explode(':', $name, 2);
             $path = $this->kernel->locateResource('@'.$namespace.'/Resources/config/pagetemplates/'.$name.'.yml');
