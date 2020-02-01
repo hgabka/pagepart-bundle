@@ -101,7 +101,7 @@ class LinkPagePart extends AbstractPagePart
      */
     public function getDefaultView()
     {
-        return 'HgabkaPagePartBundle:LinkPagePart:view.html.twig';
+        return '@HgabkaPagePart/LinkPagePart/view.html.twig';
     }
 
     /**
