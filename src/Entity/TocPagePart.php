@@ -26,7 +26,7 @@ class TocPagePart extends AbstractPagePart
      */
     public function getDefaultView()
     {
-        return 'HgabkaPagePartBundle:TocPagePart:view.html.twig';
+        return '@HgabkaPagePart/TocPagePart/view.html.twig';
     }
 
     /**
