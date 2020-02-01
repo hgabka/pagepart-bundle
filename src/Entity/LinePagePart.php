@@ -26,7 +26,7 @@ class LinePagePart extends AbstractPagePart
      */
     public function getDefaultView()
     {
-        return 'HgabkaPagePartBundle:LinePagePart:view.html.twig';
+        return '@HgabkaPagePart/LinePagePart/view.html.twig';
     }
 
     /**
