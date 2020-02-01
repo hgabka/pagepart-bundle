@@ -51,7 +51,7 @@ class TextPagePart extends AbstractPagePart
      */
     public function getDefaultView()
     {
-        return 'HgabkaPagePartBundle:TextPagePart:view.html.twig';
+        return '@HgabkaPagePart/TextPagePart/view.html.twig';
     }
 
     /**
