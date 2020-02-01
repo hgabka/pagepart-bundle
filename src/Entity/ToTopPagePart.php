@@ -26,7 +26,7 @@ class ToTopPagePart extends AbstractPagePart
      */
     public function getDefaultView()
     {
-        return 'HgabkaPagePartBundle:ToTopPagePart:view.html.twig';
+        return '@HgabkaPagePart/ToTopPagePart/view.html.twig';
     }
 
     /**
