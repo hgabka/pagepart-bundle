@@ -51,7 +51,7 @@ class RawHTMLPagePart extends AbstractPagePart
      */
     public function getDefaultView()
     {
-        return 'HgabkaPagePartBundle:RawHTMLPagePart:view.html.twig';
+        return '@HgabkaPagePart/RawHTMLPagePart/view.html.twig';
     }
 
     /**
