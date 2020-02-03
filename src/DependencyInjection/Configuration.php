@@ -19,8 +19,8 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $root = $treeBuilder->root('hgabka_page_part');
+        $treeBuilder = new TreeBuilder('hgabka_page_part');
+        $root = $treeBuilder->getRootNode();
         $root->children()
             ->booleanNode('extended_pagepart_chooser')
                 ->defaultFalse()
