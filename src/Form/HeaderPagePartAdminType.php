@@ -20,9 +20,9 @@ class HeaderPagePartAdminType extends AbstractPagePartAdminType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add(
-          'niv',
-          ChoiceType::class,
-          [
+            'niv',
+            ChoiceType::class,
+            [
             'label' => 'pagepart.header.type',
             'choices' => ['Header 1' => '1', 'Header 2' => '2', 'Header 3' => '3', 'Header 4' => '4', 'Header 5' => '5', 'Header 6' => '6'],
             'required' => true,
@@ -49,7 +49,7 @@ class HeaderPagePartAdminType extends AbstractPagePartAdminType
     {
         parent::configureOptions($resolver);
         $resolver->setDefaults(
-          [
+            [
             'data_class' => HeaderPagePart::class,
           ]
         );

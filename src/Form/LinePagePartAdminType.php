@@ -34,7 +34,7 @@ class LinePagePartAdminType extends AbstractPagePartAdminType
     {
         parent::configureOptions($resolver);
         $resolver->setDefaults(
-          [
+            [
             'data_class' => LinePagePart::class,
           ]
         );

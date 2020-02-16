@@ -130,7 +130,7 @@ class PagePartAdmin
             }
 
             // Remove sub-entities from pageparts
-            if (array_key_exists($pagePartRef->getId(), $subPagePartsToDelete)) {
+            if (\array_key_exists($pagePartRef->getId(), $subPagePartsToDelete)) {
                 $pagePart = $this->pageParts[$pagePartRef->getId()];
                 foreach ($subPagePartsToDelete[$pagePartRef->getId()] as $deleteInfo) {
                     /** @var EntityInterface[] $objects */
@@ -167,9 +167,9 @@ class PagePartAdmin
             $tempPageparts = $this->pageParts;
             $this->pageParts = [];
             foreach ($sequences as $sequence) {
-                if (array_key_exists($sequence, $this->newPageParts)) {
+                if (\array_key_exists($sequence, $this->newPageParts)) {
                     $this->pageParts[$sequence] = $this->newPageParts[$sequence];
-                } elseif (array_key_exists($sequence, $tempPageparts)) {
+                } elseif (\array_key_exists($sequence, $tempPageparts)) {
                     $this->pageParts[$sequence] = $tempPageparts[$sequence];
                 } else {
                     $this->pageParts[$sequence] = $this->getPagePart($sequence, array_search($sequence, $sequences, true) + 1);
@@ -222,13 +222,13 @@ class PagePartAdmin
         for ($i = 0; $i < $sequencescount; ++$i) {
             $pagePartRefId = $sequences[$i];
 
-            if (array_key_exists($pagePartRefId, $this->newPageParts)) {
+            if (\array_key_exists($pagePartRefId, $this->newPageParts)) {
                 $pagePart = $this->newPageParts[$pagePartRefId];
                 $this->em->persist($pagePart);
                 $this->em->flush($pagePart);
 
                 $ppRefRepo->addPagePart($this->page, $pagePart, ($i + 1), $this->context, false);
-            } elseif (array_key_exists($pagePartRefId, $this->pagePartRefs)) {
+            } elseif (\array_key_exists($pagePartRefId, $this->pagePartRefs)) {
                 $pagePartRef = $this->pagePartRefs[$pagePartRefId];
                 if ($pagePartRef instanceof PagePartRef && $pagePartRef->getSequencenumber() !== ($i + 1)) {
                     $pagePartRef->setSequencenumber($i + 1);
@@ -270,7 +270,7 @@ class PagePartAdmin
         // to achieve this, provide a 'pagelimit' parameter when adding the pp type in your PagePartAdminConfiguration
         if (!empty($possiblePPTypes)) {
             foreach ($possiblePPTypes as $possibleTypeData) {
-                if (array_key_exists('pagelimit', $possibleTypeData)) {
+                if (\array_key_exists('pagelimit', $possibleTypeData)) {
                     $pageLimit = $possibleTypeData['pagelimit'];
                     /** @var PagePartRefRepository $entityRepository */
                     $entityRepository = $this->em->getRepository(PagePartRef::class);
