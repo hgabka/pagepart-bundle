@@ -189,7 +189,7 @@ class PageTemplateWidget extends FormWidget
      */
     public function getFormWidget($name)
     {
-        if (array_key_exists($name, $this->widgets)) {
+        if (\array_key_exists($name, $this->widgets)) {
             return $this->widgets[$name];
         }
 

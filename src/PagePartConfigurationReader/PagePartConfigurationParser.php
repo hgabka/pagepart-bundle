@@ -47,11 +47,11 @@ class PagePartConfigurationParser implements PagePartConfigurationParserInterfac
 
         $value = $this->getValue($name);
 
-        if (!array_key_exists('types', $value)) {
+        if (!\array_key_exists('types', $value)) {
             $value['types'] = [];
         }
 
-        if (array_key_exists('extends', $value)) {
+        if (\array_key_exists('extends', $value)) {
             $namespace = '';
             if (false !== strpos($name, ':')) {
                 $namespace = substr($name, 0, strpos($name, ':') + 1);
@@ -78,7 +78,7 @@ class PagePartConfigurationParser implements PagePartConfigurationParserInterfac
                 continue;
             }
 
-            $types[$type['name']] = ['name' => $type['name'], 'class' => $type['class'], 'preview' => array_key_exists('preview', $type) ? $type['preview'] : ''];
+            $types[$type['name']] = ['name' => $type['name'], 'class' => $type['class'], 'preview' => \array_key_exists('preview', $type) ? $type['preview'] : ''];
             if (isset($type['pagelimit'])) {
                 $types[$type['name']]['pagelimit'] = $type['pagelimit'];
             }
