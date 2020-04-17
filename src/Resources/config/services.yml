@@ -71,11 +71,14 @@ services:
         tags:
             - { name: twig.extension }
 
-    hgabka_pageparts.pagepart_creator_service:
-        class: 'Hgabka\PagePartBundle\Helper\Services\PagePartCreatorService'
+    Hgabka\PagePartBundle\Helper\Services\PagePartCreatorService:
+        autowire: true
         calls:
             - [ setEntityManager, [ '@doctrine.orm.entity_manager' ] ]
 
+    hgabka_pageparts.pagepart_creator_service:
+        alias: Hgabka\PagePartBundle\Helper\Services\PagePartCreatorService
+ 
     hgabka_pageparts.edit_node.listener:
         class: 'Hgabka\PagePartBundle\EventListener\NodeListener'
         arguments:
