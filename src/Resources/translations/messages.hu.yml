@@ -1,3 +1,24 @@
+mediapagepart:
+    download:
+        choosefile: Fájl kiválasztása
+
+    image:
+        choosefile: Fájl kiválasztása
+        alttext: Kép hiánya esetén megjelenítendő szöveg
+        link: Ide linkeljen a kép
+        openinnewwindow: Új ablakban nyíljon meg
+        caption: Képfelirat
+
+
+    slide:
+        choose: Slide oldalelem
+
+    video:
+        choose: Videó oldalelem
+
+    audio:
+        choose: Hanganyag oldalelem
+
 pagepart:
     header:
         type: Fejléc típusa

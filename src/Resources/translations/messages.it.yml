@@ -1,3 +1,23 @@
+mediapagepart:
+    download:
+        choosefile: 'Scegli file'
+
+    image:
+        choosefile: 'Scegli file'
+        alttext: 'Testo alternativo'
+        link: 'Scegli il link'
+        openinnewwindow: 'Aprire in una nuova finestra?'
+
+
+    slide:
+        choose: 'Scegli presentazione'
+
+    video:
+        choose: 'Scegli video'
+
+    audio:
+        choose: 'Scegli audio'
+
 pagepart:
     header:
         type: 'Tipo di intestazione'
