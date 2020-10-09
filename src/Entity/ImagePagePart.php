@@ -4,7 +4,7 @@ namespace Hgabka\PagePartBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Hgabka\PagePartBundle\Form\ImagePagePartAdminType;
-use Kunstmaan\MediaBundle\Entity\Media;
+use Hgabka\MediaBundle\Entity\Media;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
