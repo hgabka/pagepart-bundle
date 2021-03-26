@@ -30,6 +30,10 @@ class TextPagePartAdminType extends AbstractPagePartAdminType
                 'contentsCss' => $options['config']['editorCss'],
             ];
         }
+                        
+        if (isset($options['config']['editor_mode'])) {
+            $params['attr']['type'] = $options['config']['editor_mode'];
+        }
 
         $builder->add('content', WysiwygType::class, $params);
     }
