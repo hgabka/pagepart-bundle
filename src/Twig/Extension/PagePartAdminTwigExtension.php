@@ -3,11 +3,14 @@
 namespace Hgabka\PagePartBundle\Twig\Extension;
 
 use Hgabka\PagePartBundle\PagePartAdmin\PagePartAdmin;
+use Twig\Extension\AbstractExtension;
+use Twig\Environment;
+use Twig\TwigFunction;
 
 /**
  * PagePartAdminTwigExtension.
  */
-class PagePartAdminTwigExtension extends \Twig_Extension
+class PagePartAdminTwigExtension extends AbstractExtension
 {
     private $usesExtendedPagePartChooser = false;
 
@@ -17,7 +20,7 @@ class PagePartAdminTwigExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('pagepartadmin_widget', [$this, 'renderWidget'], ['needs_environment' => true, 'is_safe' => ['html']]),
+            new TwigFunction('pagepartadmin_widget', [$this, 'renderWidget'], ['needs_environment' => true, 'is_safe' => ['html']]),
         ];
     }
 
@@ -42,13 +45,13 @@ class PagePartAdminTwigExtension extends \Twig_Extension
      *
      * @return string The html markup
      */
-    public function renderWidget(\Twig_Environment $env, PagePartAdmin $ppAdmin, $form = null, array $parameters = [], $templateName = null)
+    public function renderWidget(Environment $env, PagePartAdmin $ppAdmin, $form = null, array $parameters = [], $templateName = null)
     {
         if (null === $templateName) {
             $templateName = '@HgabkaPagePart/PagePartAdminTwigExtension/widget.html.twig';
         }
 
-        $template = $env->loadTemplate($templateName);
+        $template = $env->load($templateName);
 
         return $template->render(array_merge($parameters, [
             'pagepartadmin' => $ppAdmin,
