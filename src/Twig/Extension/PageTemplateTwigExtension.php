@@ -4,6 +4,9 @@ namespace Hgabka\PagePartBundle\Twig\Extension;
 
 use Hgabka\PagePartBundle\Helper\HasPageTemplateInterface;
 use Hgabka\PagePartBundle\PageTemplate\PageTemplateConfigurationService;
+use Twig\Extension\AbstractExtension;
+use Twig\Environment;
+use Twig\TwigFunction;
 
 /**
  * PagePartTwigExtension.
@@ -26,9 +29,9 @@ class PageTemplateTwigExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('render_pagetemplate', [$this, 'renderPageTemplate'], ['needs_environment' => true, 'needs_context' => true, 'is_safe' => ['html']]),
-            new \Twig_SimpleFunction('getpagetemplate', [$this, 'getPageTemplate']),
-            new \Twig_SimpleFunction('render_pagetemplate_configuration', [$this, 'renderPageTemplateConfiguration'], ['needs_environment' => true, 'needs_context' => true, 'is_safe' => ['html']]),
+            new TwigFunction('render_pagetemplate', [$this, 'renderPageTemplate'], ['needs_environment' => true, 'needs_context' => true, 'is_safe' => ['html']]),
+            new TwigFunction('getpagetemplate', [$this, 'getPageTemplate']),
+            new TwigFunction('render_pagetemplate_configuration', [$this, 'renderPageTemplateConfiguration'], ['needs_environment' => true, 'needs_context' => true, 'is_safe' => ['html']]),
         ];
     }
 
@@ -40,13 +43,13 @@ class PageTemplateTwigExtension extends \Twig_Extension
      *
      * @return string
      */
-    public function renderPageTemplate(\Twig_Environment $env, array $twigContext, HasPageTemplateInterface $page, array $parameters = [])
+    public function renderPageTemplate(Environment $env, array $twigContext, HasPageTemplateInterface $page, array $parameters = [])
     {
         $pageTemplates = $this->templateConfiguration->getPageTemplates($page);
 
         $pageTemplate = $pageTemplates[$this->getPageTemplate($page)];
 
-        $template = $env->loadTemplate($pageTemplate->getTemplate());
+        $template = $env->load($pageTemplate->getTemplate());
 
         return $template->render(array_merge($parameters, $twigContext));
     }
