@@ -7,15 +7,32 @@ use Hgabka\PagePartBundle\Helper\PagePartInterface;
 use Hgabka\PagePartBundle\PagePartAdmin\PagePartAdmin;
 use Hgabka\PagePartBundle\PagePartConfigurationReader\PagePartConfigurationReader;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Controller for the pagepart administration.
  */
-class PagePartAdminController extends Controller
+class PagePartAdminController extends AbstractController
 {
+    /** @var PagePartConfigurationReader */
+    protected $pagepartConfigurationReader;
+    
+    /** @var FormFactoryInterface */
+    protected $formFactory;
+    
+    /** @var bool */
+    protected $extended;
+    
+    public function __construct(PagePartConfigurationReader $pagePartConfigurationReader, FormFactoryInterface $formFactory, bool $extended)
+    {
+        $this->pagepartConfigurationReader = $pagePartConfigurationReader;
+        $this->formFactory = $formFactory;
+        $this->extended = $extended;
+    }
+    
     /**
      * @Route("/newPagePart", name="HgabkaPagePartBundle_admin_newpagepart")
      *
@@ -25,7 +42,7 @@ class PagePartAdminController extends Controller
      */
     public function newPagePartAction(Request $request)
     {
-        $em = $this->get('doctrine.orm.entity_manager');
+        $em = $this->getDoctrine();
 
         $pageId = $request->get('pageid');
         $pageClassName = $request->get('pageclassname');
@@ -39,7 +56,7 @@ class PagePartAdminController extends Controller
             throw new \RuntimeException(sprintf('Given page (%s:%d) has no pageparts', $pageClassName, $pageId));
         }
 
-        $pagePartConfigurationReader = $this->container->get(PagePartConfigurationReader::class);
+        $pagePartConfigurationReader = $this->pagepartConfigurationReader;
         $pagePartAdminConfigurators = $pagePartConfigurationReader->getPagePartAdminConfigurators($page);
 
         $pagePartAdminConfigurator = null;
@@ -64,7 +81,7 @@ class PagePartAdminController extends Controller
             ));
         }
 
-        $formFactory = $this->container->get('form.factory');
+        $formFactory = $this->formFactory;
         $formBuilder = $formFactory->createBuilder(FormType::class);
         $pagePartAdmin->adaptForm($formBuilder);
         $id = 'newpp_'.time();
@@ -76,7 +93,7 @@ class PagePartAdminController extends Controller
         $formBuilder->setData($data);
         $form = $formBuilder->getForm();
         $formview = $form->createView();
-        $extended = $this->getParameter('hgabka_page_part.extended');
+        $extended = $this->extended;
 
         return $this->render('@HgabkaPagePart/PagePartAdminTwigExtension/pagepart.html.twig', [
             'id' => $id,
