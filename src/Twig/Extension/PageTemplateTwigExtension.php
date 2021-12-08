@@ -11,7 +11,7 @@ use Twig\TwigFunction;
 /**
  * PagePartTwigExtension.
  */
-class PageTemplateTwigExtension extends \Twig_Extension
+class PageTemplateTwigExtension extends AbstractExtension
 {
     /**
      * @var PageTemplateConfigurationService
