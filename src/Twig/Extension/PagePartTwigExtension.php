@@ -32,7 +32,7 @@ class PagePartTwigExtension extends AbstractExtension
     /**
      * @return array
      */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
             new TwigFunction('render_pageparts', [$this, 'renderPageParts'], ['needs_environment' => true, 'needs_context' => true, 'is_safe' => ['html']]),
