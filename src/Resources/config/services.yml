@@ -100,8 +100,8 @@ services:
         tags:
             - { name: kernel.event_listener, event: hgabka_utils.postDeepCloneAndSave, method: postDeepCloneAndSave }
             
-      Hgabka\PagePartBundle\Controller\PagePartAdminController:
-          autowire: true
-          autoconfigure: true
-          arguments:
-              $extended: '%hgabka_page_part.extended%'
+    Hgabka\PagePartBundle\Controller\PagePartAdminController:
+        autowire: true
+        autoconfigure: true
+        arguments:
+            $extended: '%hgabka_page_part.extended%'
