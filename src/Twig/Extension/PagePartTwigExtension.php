@@ -7,11 +7,14 @@ use Hgabka\PagePartBundle\Entity\PagePartRef;
 use Hgabka\PagePartBundle\Helper\HasPagePartsInterface;
 use Hgabka\PagePartBundle\Helper\PagePartInterface;
 use Hgabka\PagePartBundle\Repository\PagePartRefRepository;
+use Twig\Extension\AbstractExtension;
+use Twig\Environment;
+use Twig\TwigFunction;
 
 /**
  * PagePartTwigExtension.
  */
-class PagePartTwigExtension extends \Twig_Extension
+class PagePartTwigExtension extends AbstractExtension
 {
     /**
      * @var EntityManager
@@ -32,8 +35,8 @@ class PagePartTwigExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('render_pageparts', [$this, 'renderPageParts'], ['needs_environment' => true, 'needs_context' => true, 'is_safe' => ['html']]),
-            new \Twig_SimpleFunction('getpageparts', ['needs_environment' => true, $this, 'getPageParts']),
+            new TwigFunction('render_pageparts', [$this, 'renderPageParts'], ['needs_environment' => true, 'needs_context' => true, 'is_safe' => ['html']]),
+            new TwigFunction('getpageparts', ['needs_environment' => true, $this, 'getPageParts']),
         ];
     }
 
@@ -46,9 +49,9 @@ class PagePartTwigExtension extends \Twig_Extension
      *
      * @return string
      */
-    public function renderPageParts(\Twig_Environment $env, array $twigContext, HasPagePartsInterface $page, $contextName = 'main', array $parameters = [])
+    public function renderPageParts(Environment $env, array $twigContext, HasPagePartsInterface $page, $contextName = 'main', array $parameters = [])
     {
-        $template = $env->loadTemplate('@HgabkaPagePart/PagePartTwigExtension/widget.html.twig');
+        $template = $env->load('@HgabkaPagePart/PagePartTwigExtension/widget.html.twig');
         // @var $entityRepository PagePartRefRepository
         $pageparts = $this->getPageParts($page, $contextName);
         $newTwigContext = array_merge($parameters, [
