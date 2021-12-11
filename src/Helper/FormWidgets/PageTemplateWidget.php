@@ -179,7 +179,7 @@ class PageTemplateWidget extends FormWidget
      */
     public function getTemplate()
     {
-        return 'HgabkaPagePartBundle:FormWidgets\PageTemplateWidget:widget.html.twig';
+        return '@HgabkaPagePart/FormWidgets/PageTemplateWidget/widget.html.twig';
     }
 
     /**
