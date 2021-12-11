@@ -240,8 +240,8 @@ class PagePartAdmin
 
             if (isset($pagePart)) {
                 $this->container->get('event_dispatcher')->dispatch(
-                    Events::POST_PERSIST,
-                    new PagePartEvent($pagePart)
+                    new PagePartEvent($pagePart),
+                    Events::POST_PERSIST
                 );
             }
         }
