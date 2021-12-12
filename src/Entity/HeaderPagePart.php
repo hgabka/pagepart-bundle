@@ -30,7 +30,7 @@ class HeaderPagePart extends AbstractPagePart
      */
     public function __toString()
     {
-        return 'HeaderPagePart '.$this->getTitle();
+        return 'HeaderPagePart ' . $this->getTitle();
     }
 
     /**

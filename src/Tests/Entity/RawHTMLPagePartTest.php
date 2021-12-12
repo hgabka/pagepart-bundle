@@ -40,7 +40,7 @@ class RawHTMLPagePartTest extends \PHPUnit_Framework_TestCase
      */
     public function testToString()
     {
-        $this->assertSame('RawHTMLPagePart '.htmlentities($this->object->getContent()), $this->object->__toString());
+        $this->assertSame('RawHTMLPagePart ' . htmlentities($this->object->getContent()), $this->object->__toString());
     }
 
     /**

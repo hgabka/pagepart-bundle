@@ -68,7 +68,7 @@ class CloneListenerTest extends \PHPUnit_Framework_TestCase
         $this->em->expects($this->any())
             ->method('getRepository')
             ->with($this->equalTo('KunstmaanPagePartBundle:PagePartRef'))
-            ->will($this->returnValue($this->repo));
+            ->willReturn($this->repo);
 
         $this->configurator = new PagePartAdminConfigurator();
         $this->configurator->setContext('main');
@@ -77,12 +77,12 @@ class CloneListenerTest extends \PHPUnit_Framework_TestCase
         $this->reader
             ->expects($this->any())
             ->method('getPagePartAdminConfigurators')
-            ->will($this->returnValue([$this->configurator]));
+            ->willReturn([$this->configurator]);
 
         $this->reader
             ->expects($this->any())
             ->method('getPagePartContexts')
-            ->will($this->returnValue([$this->configurator->getContext()]));
+            ->willReturn([$this->configurator->getContext()]);
 
         $this->templateService = $this->getMockBuilder(PageTemplateConfigurationService::class)->disableOriginalConstructor()->getMock();
 
@@ -125,11 +125,11 @@ class CloneListenerTest extends \PHPUnit_Framework_TestCase
 
         $entity->expects($this->any())
             ->method('getId')
-            ->will($this->returnValue(1));
+            ->willReturn(1);
 
         $clone->expects($this->any())
             ->method('getId')
-            ->will($this->returnValue(2));
+            ->willReturn(2);
 
         $this->repo->expects($this->once())
             ->method('copyPageParts')
@@ -142,7 +142,7 @@ class CloneListenerTest extends \PHPUnit_Framework_TestCase
         $this->templateService->expects($this->once())
             ->method('findOrCreateFor')
             ->with($this->identicalTo($entity))
-            ->will($this->returnValue($configuration));
+            ->willReturn($configuration);
 
         $newConfiguration = clone $configuration;
         $newConfiguration->setId(null);

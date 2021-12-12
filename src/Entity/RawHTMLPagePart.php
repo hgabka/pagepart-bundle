@@ -23,7 +23,7 @@ class RawHTMLPagePart extends AbstractPagePart
      */
     public function __toString()
     {
-        return 'RawHTMLPagePart '.htmlentities($this->getContent());
+        return 'RawHTMLPagePart ' . htmlentities($this->getContent());
     }
 
     /**

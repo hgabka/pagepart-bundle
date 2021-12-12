@@ -59,7 +59,7 @@ class PagePartConfigurationParser implements PagePartConfigurationParserInterfac
 
             foreach ((array) $value['extends'] as $extend) {
                 if (false === strpos($extend, ':')) {
-                    $extend = $namespace.$extend;
+                    $extend = $namespace . $extend;
                 }
 
                 if (false === isset($existing[$extend])) {
@@ -108,10 +108,10 @@ class PagePartConfigurationParser implements PagePartConfigurationParserInterfac
 
         $nameParts = explode(':', $name);
         if (2 !== \count($nameParts)) {
-            $path = $this->kernel->getProjectDir().'/config/pageparts/'.$name.'.yml';
+            $path = $this->kernel->getProjectDir() . '/config/pageparts/' . $name . '.yml';
         } else {
-            list($namespace, $name) = $nameParts;
-            $path = $this->kernel->locateResource('@'.$namespace.'/Resources/config/pageparts/'.$name.'.yml');
+            [$namespace, $name] = $nameParts;
+            $path = $this->kernel->locateResource('@' . $namespace . '/Resources/config/pageparts/' . $name . '.yml');
         }
         $value = Yaml::parse(file_get_contents($path));
 

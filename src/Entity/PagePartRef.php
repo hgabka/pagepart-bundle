@@ -75,7 +75,7 @@ class PagePartRef
      */
     public function __toString()
     {
-        return 'pagepartref in context '.$this->getContext();
+        return 'pagepartref in context ' . $this->getContext();
     }
 
     /**

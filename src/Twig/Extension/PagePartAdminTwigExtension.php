@@ -3,8 +3,8 @@
 namespace Hgabka\PagePartBundle\Twig\Extension;
 
 use Hgabka\PagePartBundle\PagePartAdmin\PagePartAdmin;
-use Twig\Extension\AbstractExtension;
 use Twig\Environment;
+use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
 /**

@@ -20,7 +20,7 @@ class HgabkaPagePartExtension extends Extension
     public function load(array $configs, ContainerBuilder $container)
     {
         $configs = $this->processConfiguration(new Configuration(), $configs);
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yml');
 
         $container->setParameter('hgabka_page_part.extended', $configs['extended_pagepart_chooser']);

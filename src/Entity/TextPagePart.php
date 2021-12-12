@@ -23,7 +23,7 @@ class TextPagePart extends AbstractPagePart
      */
     public function __toString()
     {
-        return 'TextPagePart '.$this->getContent();
+        return 'TextPagePart ' . $this->getContent();
     }
 
     /**

@@ -3,8 +3,8 @@
 namespace Hgabka\PagePartBundle\Event;
 
 use Hgabka\PagePartBundle\Helper\PagePartInterface;
-use Symfony\Contracts\EventDispatcher\Event;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Contracts\EventDispatcher\Event;
 
 /**
  * PagePartEvent.

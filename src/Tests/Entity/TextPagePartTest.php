@@ -50,7 +50,7 @@ class TextPagePartTest extends \PHPUnit_Framework_TestCase
      */
     public function testToString()
     {
-        $this->assertSame('TextPagePart '.$this->object->getContent(), $this->object->__toString());
+        $this->assertSame('TextPagePart ' . $this->object->getContent(), $this->object->__toString());
     }
 
     /**

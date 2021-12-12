@@ -119,7 +119,7 @@ class PagePartAdmin
         $doFlush = false;
         foreach ($this->pagePartRefs as $pagePartRef) {
             // Remove pageparts
-            if ('true' === $request->get($pagePartRef->getId().'_deleted')) {
+            if ('true' === $request->get($pagePartRef->getId() . '_deleted')) {
                 $pagePart = $this->pageParts[$pagePartRef->getId()];
                 $this->em->remove($pagePart);
                 $this->em->remove($pagePartRef);
@@ -134,7 +134,7 @@ class PagePartAdmin
                 $pagePart = $this->pageParts[$pagePartRef->getId()];
                 foreach ($subPagePartsToDelete[$pagePartRef->getId()] as $deleteInfo) {
                     /** @var EntityInterface[] $objects */
-                    $objects = \call_user_func([$pagePart, 'get'.ucfirst($deleteInfo['name'])]);
+                    $objects = \call_user_func([$pagePart, 'get' . ucfirst($deleteInfo['name'])]);
 
                     foreach ($objects as $object) {
                         if ($object->getId() === $deleteInfo['id']) {
@@ -152,17 +152,17 @@ class PagePartAdmin
 
         // Create the objects for the new pageparts
         $this->newPageParts = [];
-        $newRefIds = $request->get($this->context.'_new');
+        $newRefIds = $request->get($this->context . '_new');
 
         if (\is_array($newRefIds)) {
             foreach ($newRefIds as $newId) {
-                $type = $request->get($this->context.'_type_'.$newId);
+                $type = $request->get($this->context . '_type_' . $newId);
                 $this->newPageParts[$newId] = new $type();
             }
         }
 
         // Sort pageparts again
-        $sequences = $request->get($this->context.'_sequence');
+        $sequences = $request->get($this->context . '_sequence');
         if (null !== $sequences) {
             $tempPageparts = $this->pageParts;
             $this->pageParts = [];
@@ -195,13 +195,13 @@ class PagePartAdmin
         $data = $formbuilder->getData();
 
         foreach ($this->pageParts as $pagePartRefId => $pagePart) {
-            $data['pagepartadmin_'.$pagePartRefId] = $pagePart;
-            $formbuilder->add('pagepartadmin_'.$pagePartRefId, $pagePart->getDefaultAdminType(), ['config' => $this->getConfig()]);
+            $data['pagepartadmin_' . $pagePartRefId] = $pagePart;
+            $formbuilder->add('pagepartadmin_' . $pagePartRefId, $pagePart->getDefaultAdminType(), ['config' => $this->getConfig()]);
         }
 
         foreach ($this->newPageParts as $newPagePartRefId => $newPagePart) {
-            $data['pagepartadmin_'.$newPagePartRefId] = $newPagePart;
-            $formbuilder->add('pagepartadmin_'.$newPagePartRefId, $newPagePart->getDefaultAdminType(), ['config' => $this->getConfig()]);
+            $data['pagepartadmin_' . $newPagePartRefId] = $newPagePart;
+            $formbuilder->add('pagepartadmin_' . $newPagePartRefId, $newPagePart->getDefaultAdminType(), ['config' => $this->getConfig()]);
         }
 
         $formbuilder->setData($data);
@@ -216,7 +216,7 @@ class PagePartAdmin
         $ppRefRepo = $this->em->getRepository(PagePartRef::class);
 
         // Add new pageparts on the correct position + Re-order and save pageparts if needed
-        $sequences = $request->get($this->context.'_sequence');
+        $sequences = $request->get($this->context . '_sequence');
 
         $sequencescount = $sequences ? \count($sequences) : 0;
         for ($i = 0; $i < $sequencescount; ++$i) {

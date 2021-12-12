@@ -3,8 +3,8 @@
 namespace Hgabka\PagePartBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Hgabka\PagePartBundle\Form\ImagePagePartAdminType;
 use Hgabka\MediaBundle\Entity\Media;
+use Hgabka\PagePartBundle\Form\ImagePagePartAdminType;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**

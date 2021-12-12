@@ -19,20 +19,20 @@ class PagePartAdminController extends AbstractController
 {
     /** @var PagePartConfigurationReader */
     protected $pagepartConfigurationReader;
-    
+
     /** @var FormFactoryInterface */
     protected $formFactory;
-    
+
     /** @var bool */
     protected $extended;
-    
+
     public function __construct(PagePartConfigurationReader $pagePartConfigurationReader, FormFactoryInterface $formFactory, bool $extended)
     {
         $this->pagepartConfigurationReader = $pagePartConfigurationReader;
         $this->formFactory = $formFactory;
         $this->extended = $extended;
     }
-    
+
     /**
      * @Route("/newPagePart", name="HgabkaPagePartBundle_admin_newpagepart")
      *
@@ -75,21 +75,18 @@ class PagePartAdminController extends AbstractController
         $pagePart = new $pagePartClass();
 
         if (false === $pagePart instanceof PagePartInterface) {
-            throw new \RuntimeException(sprintf(
-                'Given pagepart expected to implement PagePartInterface, %s given',
-                $pagePartClass
-            ));
+            throw new \RuntimeException(sprintf('Given pagepart expected to implement PagePartInterface, %s given', $pagePartClass));
         }
 
         $formFactory = $this->formFactory;
         $formBuilder = $formFactory->createBuilder(FormType::class);
         $pagePartAdmin->adaptForm($formBuilder);
-        $id = 'newpp_'.time();
+        $id = 'newpp_' . time();
 
         $data = $formBuilder->getData();
-        $data['pagepartadmin_'.$id] = $pagePart;
+        $data['pagepartadmin_' . $id] = $pagePart;
 
-        $formBuilder->add('pagepartadmin_'.$id, $pagePart->getDefaultAdminType(), ['config' => $pagePartAdmin->getConfig()]);
+        $formBuilder->add('pagepartadmin_' . $id, $pagePart->getDefaultAdminType(), ['config' => $pagePartAdmin->getConfig()]);
         $formBuilder->setData($data);
         $form = $formBuilder->getForm();
         $formview = $form->createView();

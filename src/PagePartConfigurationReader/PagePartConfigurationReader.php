@@ -41,7 +41,7 @@ class PagePartConfigurationReader implements PagePartConfigurationReaderInterfac
                 $this->configurators[$value] = $this->parser->parse($value, $this->configurators);
                 $pagePartAdminConfigurators[] = $this->configurators[$value];
             } else {
-                throw new \Exception("don't know how to handle the pagePartAdminConfiguration ".\get_class($value));
+                throw new \Exception("don't know how to handle the pagePartAdminConfiguration " . \get_class($value));
             }
         }
 

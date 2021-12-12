@@ -4,8 +4,8 @@ namespace Hgabka\PagePartBundle\Twig\Extension;
 
 use Hgabka\PagePartBundle\Helper\HasPageTemplateInterface;
 use Hgabka\PagePartBundle\PageTemplate\PageTemplateConfigurationService;
-use Twig\Extension\AbstractExtension;
 use Twig\Environment;
+use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
 /**

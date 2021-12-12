@@ -82,7 +82,7 @@ class PagePartRefRepository extends EntityRepository
         $counter = 1;
         foreach ($pagepartrefs as $pagepartref) {
             $types[$pagepartref->getPagePartEntityname()][] = $pagepartref->getPagePartId();
-            $order[$pagepartref->getPagePartEntityname().$pagepartref->getPagePartId()] = $counter;
+            $order[$pagepartref->getPagePartEntityname() . $pagepartref->getPagePartId()] = $counter;
             ++$counter;
         }
 
@@ -95,8 +95,8 @@ class PagePartRefRepository extends EntityRepository
 
         // Order the pageparts
         usort($pageparts, function (EntityInterface $a, EntityInterface $b) use ($order) {
-            $aPosition = $order[\get_class($a).$a->getId()];
-            $bPosition = $order[\get_class($b).$b->getId()];
+            $aPosition = $order[\get_class($a) . $a->getId()];
+            $bPosition = $order[\get_class($b) . $b->getId()];
 
             if ($aPosition < $bPosition) {
                 return -1;
@@ -145,7 +145,7 @@ class PagePartRefRepository extends EntityRepository
         $em = $this->getEntityManager();
         $pageClassname = ClassLookup::getClass($page);
 
-        $sql = 'SELECT COUNT(pp.id) FROM '.PagePartRef::class.' pp
+        $sql = 'SELECT COUNT(pp.id) FROM ' . PagePartRef::class . ' pp
                  WHERE pp.pageEntityname = :pageEntityname
                    AND pp.pageId = :pageId
                    AND pp.pagePartEntityname = :pagePartEntityname
@@ -171,7 +171,7 @@ class PagePartRefRepository extends EntityRepository
         $em = $this->getEntityManager();
         $pageClassname = ClassLookup::getClass($page);
 
-        $sql = 'SELECT COUNT(pp.id) FROM '.PagePartRef::class.' pp
+        $sql = 'SELECT COUNT(pp.id) FROM ' . PagePartRef::class . ' pp
                  WHERE pp.pageEntityname = :pageEntityname
                    AND pp.pageId = :pageId
                    AND pp.context = :context';

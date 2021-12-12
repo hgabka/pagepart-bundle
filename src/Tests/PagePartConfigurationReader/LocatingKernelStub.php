@@ -10,9 +10,9 @@ class LocatingKernelStub implements KernelInterface
 {
     public function locateResource($name, $dir = null, $first = true)
     {
-        list(, $path) = explode('/', $name, 2);
+        [, $path] = explode('/', $name, 2);
 
-        return __DIR__.'/'.$path;
+        return __DIR__ . '/' . $path;
     }
 
     public function serialize()

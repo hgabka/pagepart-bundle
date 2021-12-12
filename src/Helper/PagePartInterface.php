@@ -1,6 +1,6 @@
 <?php
 
-namespace  Hgabka\PagePartBundle\Helper;
+namespace Hgabka\PagePartBundle\Helper;
 
 use Hgabka\UtilsBundle\Entity\EntityInterface;
 

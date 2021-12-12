@@ -7,8 +7,8 @@ use Hgabka\PagePartBundle\Entity\PagePartRef;
 use Hgabka\PagePartBundle\Helper\HasPagePartsInterface;
 use Hgabka\PagePartBundle\Helper\PagePartInterface;
 use Hgabka\PagePartBundle\Repository\PagePartRefRepository;
-use Twig\Extension\AbstractExtension;
 use Twig\Environment;
+use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
 /**

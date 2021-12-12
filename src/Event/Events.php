@@ -12,5 +12,5 @@ class Events
      *
      * @var string
      */
-    const POST_PERSIST = 'hgabka_pagepart.postPersist';
+    public const POST_PERSIST = 'hgabka_pagepart.postPersist';
 }
