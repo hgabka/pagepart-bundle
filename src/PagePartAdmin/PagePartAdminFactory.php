@@ -5,6 +5,8 @@ namespace Hgabka\PagePartBundle\PagePartAdmin;
 use Doctrine\ORM\EntityManagerInterface;
 use Hgabka\PagePartBundle\Helper\HasPagePartsInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 /**
  * PagePartAdminFactory.
@@ -12,18 +14,18 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class PagePartAdminFactory
 {
     /**
-     * @var ContainerInterface
+     * @var EventDispatcher
      */
-    private $container;
+    private $eventDispatcher;
 
     /**
      * Constructor.
      *
      * @param ContainerInterface $container
      */
-    public function __construct(ContainerInterface $container)
+    public function __construct(EventDispatcherInterface $eventDispatcher)
     {
-        $this->container = $container;
+        $this->eventDispatcher = $eventDispatcher;
     }
 
     /**
@@ -36,6 +38,6 @@ class PagePartAdminFactory
      */
     public function createList(PagePartAdminConfiguratorInterface $configurator, EntityManagerInterface $em, HasPagePartsInterface $page, $context = null)
     {
-        return new PagePartAdmin($configurator, $em, $page, $context, $this->container);
+        return new PagePartAdmin($configurator, $em, $page, $context, $this->eventDispatcher);
     }
 }

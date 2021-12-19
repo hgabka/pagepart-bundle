@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 /**
  * Controller for the pagepart administration.
@@ -23,14 +24,18 @@ class PagePartAdminController extends AbstractController
     /** @var FormFactoryInterface */
     protected $formFactory;
 
+    /** @var EventDispatcherInterface */
+    protected $eventDispatcher;
+
     /** @var bool */
     protected $extended;
 
-    public function __construct(PagePartConfigurationReader $pagePartConfigurationReader, FormFactoryInterface $formFactory, bool $extended)
+    public function __construct(PagePartConfigurationReader $pagePartConfigurationReader, FormFactoryInterface $formFactory, EventDispatcherInterface $eventDispatcher, bool $extended)
     {
         $this->pagepartConfigurationReader = $pagePartConfigurationReader;
         $this->formFactory = $formFactory;
         $this->extended = $extended;
+        $this->eventDispatcher = $eventDispatcher;
     }
 
     /**
@@ -70,7 +75,7 @@ class PagePartAdminController extends AbstractController
             throw new \RuntimeException(sprintf('No page part admin configurator found for context "%s".', $context));
         }
 
-        $pagePartAdmin = new PagePartAdmin($pagePartAdminConfigurator, $em, $page, $context, $this->container);
+        $pagePartAdmin = new PagePartAdmin($pagePartAdminConfigurator, $em->getManager(), $page, $context, $this->eventDispatcher);
         /** @var PagePartInterface $pagePart */
         $pagePart = new $pagePartClass();
 

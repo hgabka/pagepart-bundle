@@ -12,9 +12,9 @@ use Hgabka\PagePartBundle\Helper\PagePartInterface;
 use Hgabka\PagePartBundle\Repository\PagePartRefRepository;
 use Hgabka\UtilsBundle\Entity\EntityInterface;
 use Hgabka\UtilsBundle\Helper\ClassLookup;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 /**
  * PagePartAdmin.
@@ -42,9 +42,9 @@ class PagePartAdmin
     protected $context;
 
     /**
-     * @var ContainerInterface
+     * @var EventDispatcherInterfaceInterface
      */
-    protected $container;
+    protected $eventDispatcher;
 
     /**
      * @var PagePartInterface[]
@@ -70,7 +70,7 @@ class PagePartAdmin
      *
      * @throws \InvalidArgumentException
      */
-    public function __construct(PagePartAdminConfiguratorInterface $configurator, EntityManagerInterface $em, HasPagePartsInterface $page, $context = null, ContainerInterface $container = null)
+    public function __construct(PagePartAdminConfiguratorInterface $configurator, EntityManagerInterface $em, HasPagePartsInterface $page, $context, EventDispatcherInterface $eventDispatcher)
     {
         if (!($page instanceof EntityInterface)) {
             throw new \InvalidArgumentException('Page must be an instance of EntityInterface.');
@@ -79,7 +79,7 @@ class PagePartAdmin
         $this->configurator = $configurator;
         $this->em = $em;
         $this->page = $page;
-        $this->container = $container;
+        $this->eventDispatcher = $eventDispatcher;
 
         if ($context) {
             $this->context = $context;
@@ -239,7 +239,7 @@ class PagePartAdmin
             }
 
             if (isset($pagePart)) {
-                $this->container->get('event_dispatcher')->dispatch(
+                $this->eventDispatcher->dispatch(
                     new PagePartEvent($pagePart),
                     Events::POST_PERSIST
                 );
