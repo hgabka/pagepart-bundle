@@ -6,7 +6,7 @@ use Hgabka\PagePartBundle\Helper\HasPagePartsInterface;
 use Hgabka\PagePartBundle\Helper\PagePartInterface;
 use Hgabka\PagePartBundle\PagePartAdmin\PagePartAdmin;
 use Hgabka\PagePartBundle\PagePartConfigurationReader\PagePartConfigurationReader;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\FormFactoryInterface;
