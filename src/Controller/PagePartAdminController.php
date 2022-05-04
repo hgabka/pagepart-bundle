@@ -2,6 +2,7 @@
 
 namespace Hgabka\PagePartBundle\Controller;
 
+use Doctrine\Persistence\ManagerRegistry;
 use Hgabka\PagePartBundle\Helper\HasPagePartsInterface;
 use Hgabka\PagePartBundle\Helper\PagePartInterface;
 use Hgabka\PagePartBundle\PagePartAdmin\PagePartAdmin;
@@ -30,12 +31,16 @@ class PagePartAdminController extends AbstractController
     /** @var bool */
     protected $extended;
 
-    public function __construct(PagePartConfigurationReader $pagePartConfigurationReader, FormFactoryInterface $formFactory, EventDispatcherInterface $eventDispatcher, bool $extended)
+    /** @var ManagerRegistry */
+    protected $doctrine;
+
+    public function __construct(PagePartConfigurationReader $pagePartConfigurationReader, FormFactoryInterface $formFactory, EventDispatcherInterface $eventDispatcher, ManagerRegistry $doctrine, bool $extended)
     {
         $this->pagepartConfigurationReader = $pagePartConfigurationReader;
         $this->formFactory = $formFactory;
         $this->extended = $extended;
         $this->eventDispatcher = $eventDispatcher;
+        $this->doctrine = $doctrine;
     }
 
     /**
@@ -47,7 +52,7 @@ class PagePartAdminController extends AbstractController
      */
     public function newPagePartAction(Request $request)
     {
-        $em = $this->getDoctrine();
+        $em = $this->doctrine;
 
         $pageId = $request->get('pageid');
         $pageClassName = $request->get('pageclassname');
