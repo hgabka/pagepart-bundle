@@ -5,59 +5,36 @@ namespace Hgabka\PagePartBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Hgabka\PagePartBundle\Form\TextPagePartAdminType;
 
-/**
- * Class that defines a text page part object to add to a page.
- *
- * @ORM\Entity
- * @ORM\Table(name="hg_page_part_text_page_parts")
- */
+#[ORM\Entity]
+#[ORM\Table(name: 'hg_page_part_text_page_parts')]
 class TextPagePart extends AbstractPagePart
 {
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    protected $content;
+    #[ORM\Column(name: 'content', type: 'text', nullable: true)]
+    protected ?string $content = null;
 
-    /**
-     * @return string
-     */
-    public function __toString()
+    public function __toString(): string
     {
         return 'TextPagePart ' . $this->getContent();
     }
 
-    /**
-     * @return string
-     */
-    public function getContent()
+    public function getContent(): ?string
     {
         return $this->content;
     }
 
-    /**
-     * @param string $content
-     *
-     * @return TextPagePart
-     */
-    public function setContent($content)
+    public function setContent(?string $content): self
     {
         $this->content = $content;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getDefaultView()
+    public function getDefaultView(): string
     {
         return '@HgabkaPagePart/TextPagePart/view.html.twig';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getDefaultAdminType()
+    public function getDefaultAdminType(): string
     {
         return TextPagePartAdminType::class;
     }

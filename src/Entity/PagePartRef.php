@@ -2,272 +2,157 @@
 
 namespace Hgabka\PagePartBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping as ORM;
+use Hgabka\PagePartBundle\Helper\PagePartInterface;
+use Hgabka\PagePartBundle\Repository\PagePartRefRepository;
 
-/**
- * Reference between a page and a pagepart.
- *
- * @ORM\Entity(repositoryClass="Hgabka\PagePartBundle\Repository\PagePartRefRepository")
- * @ORM\Table(name="hg_page_part_page_part_refs", indexes={@ORM\Index(name="idx_page_part_search", columns={"page_id", "page_entityname", "context"})})
- * @ORM\HasLifecycleCallbacks()
- */
+#[ORM\Entity(repositoryClass: PagePartRefRepository::class)]
+#[ORM\Table(name: 'hg_page_part_page_part_refs')]
+#[ORM\Index(name: 'idx_page_part_search', columns: ['page_id', 'page_entityname', 'context'])]
+#[ORM\HasLifecycleCallbacks]
 class PagePartRef
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="bigint")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
+    #[ORM\Id]
+    #[ORM\Column(type: 'bigint')]
+    #[ORM\GeneratedValue(strategy: 'AUTO')]
+    protected ?int $id = null;
 
-    /**
-     * @ORM\Column(type="bigint")
-     */
-    protected $pageId;
+    #[ORM\Column(name: 'page_id', type: 'bigint')]
+    protected ?int $pageId = null;
 
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $pageEntityname;
+    #[ORM\Column(name: 'page_entityname', type: 'string')]
+    protected ?string $pageEntityname = null;
 
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $context;
+    #[ORM\Column(name: 'context', type: 'string')]
+    protected ?string $context = null;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    protected $sequencenumber;
+    #[ORM\Column(name: 'sequencenumber', type: 'integer')]
+    protected ?int $sequencenumber = null;
 
-    /**
-     * @ORM\Column(type="bigint")
-     */
-    protected $pagePartId;
+    #[ORM\Column(name: 'page_part_id', type: 'bigint')]
+    protected ?int $pagePartId = null;
 
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $pagePartEntityname;
+    #[ORM\Column(name: 'page_part_entityname', type: 'string')]
+    protected ?string $pagePartEntityname = null;
 
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    protected $created;
+    #[ORM\Column(name: 'created', type: 'datetime')]
+    protected ?DateTime $created = null;
 
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    protected $updated;
+    #[ORM\Column(name: 'updated', type: 'datetime')]
+    protected ?DateTime $updated = null;
 
-    /**
-     * The constructor.
-     */
     public function __construct()
     {
-        $this->setCreated(new \DateTime());
-        $this->setUpdated(new \DateTime());
+        $this->setCreated(new DateTime());
+        $this->setUpdated(new DateTime());
     }
 
-    /**
-     * @return string
-     */
-    public function __toString()
+    public function __toString(): string
     {
         return 'pagepartref in context ' . $this->getContext();
     }
 
-    /**
-     * Get id.
-     *
-     * @return int
-     */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @param int $num
-     */
-    public function setId($num)
+    public function setId(?int $num): self
     {
         $this->id = $num;
     }
 
-    /**
-     * Get pageId.
-     *
-     * @return int
-     */
-    public function getPageId()
+    public function getPageId(): ?int
     {
         return $this->pageId;
     }
 
-    /**
-     * @param int $id
-     */
-    public function setPageId($id)
+    public function setPageId(?int $id): self
     {
         $this->pageId = $id;
     }
 
-    /**
-     * Get pageEntityname.
-     *
-     * @return string
-     */
-    public function getPageEntityname()
+    public function getPageEntityname(): ?string
     {
         return $this->pageEntityname;
     }
 
-    /**
-     * Set pageEntityname.
-     *
-     * @param string $pageEntityname
-     */
-    public function setPageEntityname($pageEntityname)
+    public function setPageEntityname(?string $pageEntityname): self
     {
         $this->pageEntityname = $pageEntityname;
     }
 
-    /**
-     * get context.
-     *
-     * @return string
-     */
-    public function getContext()
+    public function getContext(): ?string
     {
         return $this->context;
     }
 
-    /**
-     * Set context.
-     *
-     * @param string $context
-     */
-    public function setContext($context)
+    public function setContext(?string $context): self
     {
         $this->context = $context;
     }
 
-    /**
-     * Get sequencenumber.
-     *
-     * @return int
-     */
-    public function getSequencenumber()
+    public function getSequencenumber(): ?int
     {
         return $this->sequencenumber;
     }
 
-    /**
-     * Set sequencenumber.
-     *
-     * @param int $sequencenumber
-     */
-    public function setSequencenumber($sequencenumber)
+    public function setSequencenumber(?int $sequencenumber): self
     {
         $this->sequencenumber = $sequencenumber;
     }
 
-    /**
-     * Get pagePartId.
-     *
-     * @return int
-     */
-    public function getPagePartId()
+    public function getPagePartId(): ?int
     {
         return $this->pagePartId;
     }
 
-    /**
-     * Set pagePartId.
-     *
-     * @param string $pagePartId
-     */
-    public function setPagePartId($pagePartId)
+    public function setPagePartId(?int $pagePartId): self
     {
         $this->pagePartId = $pagePartId;
     }
 
-    /**
-     * Get pagePartEntityname.
-     *
-     * @return string
-     */
-    public function getPagePartEntityname()
+    public function getPagePartEntityname(): ?string
     {
         return $this->pagePartEntityname;
     }
 
-    /**
-     * Set pagePartEntityname.
-     *
-     * @param string $pagePartEntityname
-     */
-    public function setPagePartEntityname($pagePartEntityname)
+    public function setPagePartEntityname(?string $pagePartEntityname): self
     {
         $this->pagePartEntityname = $pagePartEntityname;
     }
 
-    /**
-     * Get created.
-     *
-     * @return \DateTime
-     */
-    public function getCreated()
+    public function getCreated(): ?DateTime
     {
         return $this->created;
     }
 
-    /**
-     * Set created.
-     *
-     * @param \DateTime $created
-     */
-    public function setCreated(\DateTime $created)
+    public function setCreated(?DateTime $created): self
     {
         $this->created = $created;
     }
 
-    /**
-     * Get updated.
-     *
-     * @return \DateTime
-     */
-    public function getUpdated()
+    public function getUpdated(): ?DateTime
     {
         return $this->updated;
     }
 
-    /**
-     * Set updated.
-     *
-     * @param \DateTime $updated
-     */
-    public function setUpdated(\DateTime $updated)
+    public function setUpdated(?DateTime $updated): self
     {
         $this->updated = $updated;
     }
 
-    /**
-     * @ORM\PreUpdate
-     */
-    public function setUpdatedValue()
+    #[ORM\PreUpdate]
+    public function setUpdatedValue(): self
     {
-        $this->setUpdated(new \DateTime());
+        $this->setUpdated(new DateTime());
+
+        return $this;
     }
 
-    /**
-     * @param \Doctrine\ORM\EntityManager $em
-     *
-     * @return \Hgabka\PagePartBundle\Helper\PagePartInterface
-     */
-    public function getPagePart(EntityManager $em)
+    public function getPagePart(EntityManager $em): ?PagePartInterface
     {
         return $em->getRepository($this->getPagePartEntityname())->find($this->getPagePartId());
     }

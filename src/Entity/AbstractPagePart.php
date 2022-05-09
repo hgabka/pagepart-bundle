@@ -16,12 +16,12 @@ abstract class AbstractPagePart implements PagePartInterface
      * @ORM\Column(type="integer", name="id")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    #[ORM\Id]
+    #[ORM\Column(type: 'integer')]
+    #[ORM\GeneratedValue(strategy: 'AUTO')]
+    protected ?int $id = null;
 
-    /**
-     * @return int
-     */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -31,7 +31,7 @@ abstract class AbstractPagePart implements PagePartInterface
      *
      * @return AbstractPagePart
      */
-    public function setId($id)
+    public function setId(?int $id): self
     {
         $this->id = $id;
 
@@ -44,7 +44,7 @@ abstract class AbstractPagePart implements PagePartInterface
      *
      * @return string
      */
-    public function getAdminView()
+    public function getAdminView(): ?string
     {
         return $this->getDefaultView();
     }
@@ -55,7 +55,7 @@ abstract class AbstractPagePart implements PagePartInterface
      *
      * @return string
      */
-    public function getView(HasPagePartsInterface $page = null)
+    public function getView(?HasPagePartsInterface $page = null): ?string
     {
         return $this->getDefaultView();
     }

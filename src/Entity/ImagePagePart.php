@@ -5,179 +5,93 @@ namespace Hgabka\PagePartBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Hgabka\MediaBundle\Entity\Media;
 use Hgabka\PagePartBundle\Form\ImagePagePartAdminType;
-use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * ImagePagePart.
- *
- * @ORM\Entity
- * @ORM\Table(name="hg_page_part_image_page_parts")
- */
+#[ORM\Entity]
+#[ORM\Table(name: 'hg_page_part_image_page_parts')]
 class ImagePagePart extends AbstractPagePart
 {
-    /**
-     * @ORM\ManyToOne(targetEntity="Hgabka\MediaBundle\Entity\Media")
-     * @ORM\JoinColumn(name="media_id", referencedColumnName="id")
-     * @Assert\NotNull()
-     */
-    private $media;
+    #[ORM\ManyToOne(targetEntity: Media::class)]
+    #[ORM\JoinColumn(name: 'media_id', referencedColumnName: 'id')]
+    private ?Media $media = null;
 
-    /**
-     * @ORM\Column(type="string", name="caption", nullable=true)
-     */
-    private $caption;
+    #[ORM\Column(name: 'caption', type: 'string', nullable: true)]
+    private ?string $caption = null;
 
-    /**
-     * @ORM\Column(type="string", name="alt_text", nullable=true)
-     */
-    private $altText;
+    #[ORM\Column(name: 'alt_text', type: 'string', nullable: true)]
+    private ?string $altText = null;
 
-    /**
-     * @ORM\Column(name="link", type="string", nullable=true)
-     */
-    private $link;
+    #[ORM\Column(name: 'link', type: 'string', nullable: true)]
+    private ?string $link = null;
 
-    /**
-     * @ORM\Column(name="open_in_new_window", type="boolean", nullable=true)
-     */
-    private $openInNewWindow;
+    #[ORM\Column(name: 'open_in_new_window', type: 'boolean', nullable: true)]
+    private ?bool $openInNewWindow = null;
 
-    /**
-     * Get open in new window.
-     *
-     * @return bool
-     */
-    public function getOpenInNewWindow()
+    public function getOpenInNewWindow(): ?bool
     {
         return $this->openInNewWindow;
     }
 
-    /**
-     * Set open in new window.
-     *
-     * @param bool $openInNewWindow
-     *
-     * @return ImagePagePart
-     */
-    public function setOpenInNewWindow($openInNewWindow)
+    public function setOpenInNewWindow(?bool $openInNewWindow): self
     {
         $this->openInNewWindow = $openInNewWindow;
 
         return $this;
     }
 
-    /**
-     * Set link.
-     *
-     * @param string $link
-     *
-     * @return ImagePagePart
-     */
-    public function setLink($link)
+    public function setLink(?string $link): self
     {
         $this->link = $link;
 
         return $this;
     }
 
-    /**
-     * Get link.
-     *
-     * @return string
-     */
-    public function getLink()
+    public function getLink(): ?string
     {
         return $this->link;
     }
 
-    /**
-     * Set alt text.
-     *
-     * @param string $altText
-     *
-     * @return ImagePagePart
-     */
-    public function setAltText($altText)
+    public function setAltText(?string $altText): self
     {
         $this->altText = $altText;
 
         return $this;
     }
 
-    /**
-     * Get alt text.
-     *
-     * @return string
-     */
-    public function getAltText()
+    public function getAltText(): ?string
     {
         return $this->altText;
     }
 
-    /**
-     * Get media.
-     *
-     * @return Media
-     */
-    public function getMedia()
+    public function getMedia(): ?Media
     {
         return $this->media;
     }
 
-    /**
-     * Set media.
-     *
-     * @param Media $media
-     *
-     * @return ImagePagePart
-     */
-    public function setMedia(Media $media)
+    public function setMedia(?Media $media): self
     {
         $this->media = $media;
 
         return $this;
     }
 
-    /**
-     * Set caption.
-     *
-     * @param string $caption
-     *
-     * @return ImagePagePart
-     */
-    public function setCaption($caption)
+    public function setCaption(?string $caption): self
     {
         $this->caption = $caption;
 
         return $this;
     }
 
-    /**
-     * Get caption.
-     *
-     * @return string
-     */
-    public function getCaption()
+    public function getCaption(): ?string
     {
         return $this->caption;
     }
 
-    /**
-     * Get the twig view.
-     *
-     * @return string
-     */
-    public function getDefaultView()
+    public function getDefaultView(): string
     {
         return '@HgabkaPagePart/ImagePagePart/view.html.twig';
     }
 
-    /**
-     * Get the admin form type.
-     *
-     * @return string
-     */
-    public function getDefaultAdminType()
+    public function getDefaultAdminType(): string
     {
         return ImagePagePartAdminType::class;
     }

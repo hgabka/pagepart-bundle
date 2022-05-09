@@ -5,34 +5,21 @@ namespace Hgabka\PagePartBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Hgabka\PagePartBundle\Form\TocPagePartAdminType;
 
-/**
- * TocPagePart.
- *
- * @ORM\Entity
- * @ORM\Table(name="hg_page_part_toc_page_parts")
- */
+#[ORM\Entity]
+#[ORM\Table(name: 'hg_page_part_toc_page_parts')]
 class TocPagePart extends AbstractPagePart
 {
-    /**
-     * @return string
-     */
-    public function __toString()
+    public function __toString(): string
     {
         return 'TocPagePart';
     }
 
-    /**
-     * @return string
-     */
-    public function getDefaultView()
+    public function getDefaultView(): string
     {
         return '@HgabkaPagePart/TocPagePart/view.html.twig';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getDefaultAdminType()
+    public function getDefaultAdminType(): string
     {
         return TocPagePartAdminType::class;
     }

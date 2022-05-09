@@ -5,34 +5,21 @@ namespace Hgabka\PagePartBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Hgabka\PagePartBundle\Form\LinePagePartAdminType;
 
-/**
- * LinePagePart.
- *
- * @ORM\Entity
- * @ORM\Table(name="hg_page_part_line_page_parts")
- */
+#[ORM\Entity]
+#[ORM\Table(name: 'hg_page_part_line_page_parts')]
 class LinePagePart extends AbstractPagePart
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function __toString()
+    public function __toString(): string
     {
         return 'LinePagePart';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getDefaultView()
+    public function getDefaultView(): string
     {
         return '@HgabkaPagePart/LinePagePart/view.html.twig';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getDefaultAdminType()
+    public function getDefaultAdminType(): string
     {
         return LinePagePartAdminType::class;
     }

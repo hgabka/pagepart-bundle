@@ -5,109 +5,69 @@ namespace Hgabka\PagePartBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Hgabka\PagePartBundle\Form\LinkPagePartAdminType;
 
-/**
- * LinkPagePart.
- *
- * @ORM\Entity
- * @ORM\Table(name="hg_page_part_link_page_parts")
- */
+#[ORM\Entity]
+#[ORM\Table(name: 'hg_page_part_link_page_parts')]
 class LinkPagePart extends AbstractPagePart
 {
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    protected $url;
+    #[ORM\Column(name: 'url', type: 'string', nullable: true)]
+    protected ?string $url = null;
 
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     */
-    protected $openinnewwindow;
+    #[ORM\Column(name: 'openinnewwindow', type: 'boolean', nullable: true)]
+    protected ?bool $openinnewwindow = null;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    protected $text;
+    #[ORM\Column(name: '`text`', type: 'string', nullable: true)]
+    protected ?string $text = null;
 
-    /**
-     * @return string
-     */
-    public function __toString()
+    public function __toString(): string
     {
         return 'LinkPagePart';
     }
 
-    /**
-     * @param string $url
-     *
-     * @return LinkPagePart
-     */
-    public function setUrl($url)
+    public function setUrl(?string $url): self
     {
         $this->url = $url;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getUrl()
+    public function getUrl(): ?string
     {
         return $this->url;
     }
 
-    /**
-     * @return bool
-     */
-    public function getOpenInNewWindow()
+    public function getOpenInNewWindow(): ?bool
     {
         return $this->openinnewwindow;
     }
 
-    /**
-     * @param bool $openInNewWindow
-     *
-     * @return LinkPagePart
-     */
-    public function setOpenInNewWindow($openInNewWindow)
+    public function setOpenInNewWindow(?bool $openInNewWindow): self
     {
         $this->openinnewwindow = $openInNewWindow;
 
         return $this;
     }
 
-    /**
-     * @param string $text
-     *
-     * @return LinkPagePart
-     */
-    public function setText($text)
+    public function setText(?string $text): self
     {
         $this->text = $text;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getText()
+    public function getText(): ?string
     {
         return $this->text;
     }
 
-    /**
-     * @return string
-     */
-    public function getDefaultView()
+    public function getDefaultView(): string
     {
         return '@HgabkaPagePart/LinkPagePart/view.html.twig';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getDefaultAdminType()
+    public function getDefaultAdminType(): string
     {
         return LinkPagePartAdminType::class;
     }

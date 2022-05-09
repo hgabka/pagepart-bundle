@@ -5,133 +5,76 @@ namespace Hgabka\PagePartBundle\Entity;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping as ORM;
 use Hgabka\NodeBundle\Entity\PageInterface;
+use Hgabka\PagePartBundle\Repository\PageTemplateConfigurationRepository;
 
-/**
- * Configuration for page templates.
- *
- * @ORM\Entity(repositoryClass="Hgabka\PagePartBundle\Repository\PageTemplateConfigurationRepository")
- * @ORM\Table(name="hg_page_part_page_template_configuration", indexes={@ORM\Index(name="idx_page_template_config_search", columns={"page_id", "page_entity_name"})})
- */
+#[ORM\Entity(repositoryClass: PageTemplateConfigurationRepository::class)]
+#[ORM\Table(name: 'hg_page_part_page_template_configuration')]
+#[ORM\Index(name: 'idx_page_template_config_search', columns: ['page_id', 'page_entity_name'])]
 class PageTemplateConfiguration
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer", name="id")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
+    #[ORM\Id]
+    #[ORM\Column(type: 'integer')]
+    #[ORM\GeneratedValue(strategy: 'AUTO')]
+    protected ?int $id = null;
 
-    /**
-     * @ORM\Column(type="bigint", name="page_id")
-     */
-    protected $pageId;
+    #[ORM\Column(name: 'page_id', type: 'bigint')]
+    protected ?int $pageId = null;
 
-    /**
-     * @ORM\Column(type="string", name="page_entity_name")
-     */
-    protected $pageEntityName;
+    #[ORM\Column(name: 'page_entity_name', type: 'string')]
+    protected ?string $pageEntityName = null;
 
-    /**
-     * @ORM\Column(type="string", name="page_template")
-     */
-    protected $pageTemplate;
+    #[ORM\Column(name: 'page_template', type: 'string')]
+    protected ?string $pageTemplate = null;
 
-    /**
-     * @return int
-     */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @param int $id
-     *
-     * @return AbstractPagePart
-     */
-    public function setId($id)
+    public function setId(?int $id): self
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * Get pageId.
-     *
-     * @return int
-     */
-    public function getPageId()
+    public function getPageId(): ?int
     {
         return $this->pageId;
     }
 
-    /**
-     * @param int $id
-     *
-     * @return PageTemplateConfiguration
-     */
-    public function setPageId($id)
+    public function setPageId(?int $id): self
     {
         $this->pageId = $id;
 
         return $this;
     }
 
-    /**
-     * Get pageEntityname.
-     *
-     * @return string
-     */
-    public function getPageEntityName()
+    public function getPageEntityName(): ?string
     {
         return $this->pageEntityName;
     }
 
-    /**
-     * Set pageEntityname.
-     *
-     * @param string $pageEntityName
-     *
-     * @return PageTemplateConfiguration
-     */
-    public function setPageEntityName($pageEntityName)
+    public function setPageEntityName(?string $pageEntityName): self
     {
         $this->pageEntityName = $pageEntityName;
 
         return $this;
     }
 
-    /**
-     * get pageTemplate.
-     *
-     * @return string
-     */
-    public function getPageTemplate()
+    public function getPageTemplate(): ?string
     {
         return $this->pageTemplate;
     }
 
-    /**
-     * Set pagetemplate.
-     *
-     * @param string $pageTemplate
-     *
-     * @return PageTemplateConfiguration
-     */
-    public function setPageTemplate($pageTemplate)
+    public function setPageTemplate(?string $pageTemplate): self
     {
         $this->pageTemplate = $pageTemplate;
 
         return $this;
     }
 
-    /**
-     * @param \Doctrine\ORM\EntityManager $em
-     *
-     * @return PageInterface
-     */
-    public function getPage(EntityManager $em)
+    public function getPage(EntityManager $em): ?PageInterface
     {
         return $em->getRepository($this->getPageEntityname())->find($this->getPageId());
     }

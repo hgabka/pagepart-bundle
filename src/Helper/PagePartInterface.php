@@ -14,14 +14,14 @@ interface PagePartInterface extends EntityInterface
      *
      * @return string
      */
-    public function getDefaultView();
+    public function getDefaultView(): ?string;
 
     /**
      * Returns the view used in the backend.
      *
      * @return string
      */
-    public function getAdminView();
+    public function getAdminView(): ?string;
 
     /**
      * This method can be used to override the default view for a specific page type.
@@ -30,12 +30,12 @@ interface PagePartInterface extends EntityInterface
      *
      * @return string
      */
-    public function getView(HasPagePartsInterface $page = null);
+    public function getView(?HasPagePartsInterface $page = null): ?string;
 
     /**
      * Returns the default backend form type for the page part.
      *
      * @return string fully qualified class name of a form
      */
-    public function getDefaultAdminType();
+    public function getDefaultAdminType(): ?string;
 }

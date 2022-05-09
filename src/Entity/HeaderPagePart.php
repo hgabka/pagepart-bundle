@@ -7,81 +7,47 @@ use Hgabka\PagePartBundle\Form\HeaderPagePartAdminType;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 
-/**
- * Class that defines a header page part object to add to a page.
- *
- * @ORM\Entity
- * @ORM\Table(name="hg_page_part_header_page_parts")
- */
+#[ORM\Entity]
+#[ORM\Table(name: 'hg_page_part_header_page_parts')]
 class HeaderPagePart extends AbstractPagePart
 {
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    protected $niv;
+    #[ORM\Column(name: 'niv', type: 'integer', nullable: true)]
+    protected ?int $niv = null;
 
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    protected $title;
+    #[ORM\Column(name: 'title', type: 'string', nullable: true)]
+    protected ?string $title = null;
 
-    /**
-     * @return string
-     */
-    public function __toString()
+    public function __toString(): string
     {
         return 'HeaderPagePart ' . $this->getTitle();
     }
 
-    /**
-     * @param ClassMetadata $metadata
-     */
-    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    public static function loadValidatorMetadata(ClassMetadata $metadata): void
     {
         $metadata->addPropertyConstraint('niv', new NotBlank(['message' => 'headerpagepart.niv.not_blank']));
         $metadata->addPropertyConstraint('title', new NotBlank(['message' => 'headerpagepart.title.not_blank']));
     }
 
-    /**
-     * Set niv.
-     *
-     * @param int $niv
-     *
-     * @return HeaderPagePart
-     */
-    public function setNiv($niv)
+    public function setNiv(?int $niv): self
     {
         $this->niv = $niv;
 
         return $this;
     }
 
-    /**
-     * Get niv.
-     *
-     * @return int
-     */
-    public function getNiv()
+    public function getNiv(): ?int
     {
         return $this->niv;
     }
 
-    /**
-     * @param string $title
-     *
-     * @return HeaderPagePart
-     */
-    public function setTitle($title)
+    public function setTitle(?string $title): self
     {
         $this->title = $title;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
@@ -89,7 +55,7 @@ class HeaderPagePart extends AbstractPagePart
     /**
      * @return string
      */
-    public function getDefaultView()
+    public function getDefaultView(): string
     {
         return '@HgabkaPagePart/HeaderPagePart/view.html.twig';
     }
@@ -97,7 +63,7 @@ class HeaderPagePart extends AbstractPagePart
     /**
      * {@inheritdoc}
      */
-    public function getDefaultAdminType()
+    public function getDefaultAdminType(): string
     {
         return HeaderPagePartAdminType::class;
     }
