@@ -62,6 +62,8 @@ class PagePartRef
     public function setId(?int $num): self
     {
         $this->id = $num;
+        
+        return $this;
     }
 
     public function getPageId(): ?int
@@ -72,6 +74,8 @@ class PagePartRef
     public function setPageId(?int $id): self
     {
         $this->pageId = $id;
+        
+        return $this;
     }
 
     public function getPageEntityname(): ?string
@@ -82,6 +86,8 @@ class PagePartRef
     public function setPageEntityname(?string $pageEntityname): self
     {
         $this->pageEntityname = $pageEntityname;
+        
+        return $this;
     }
 
     public function getContext(): ?string
@@ -92,6 +98,8 @@ class PagePartRef
     public function setContext(?string $context): self
     {
         $this->context = $context;
+        
+        return $this;
     }
 
     public function getSequencenumber(): ?int
@@ -102,6 +110,8 @@ class PagePartRef
     public function setSequencenumber(?int $sequencenumber): self
     {
         $this->sequencenumber = $sequencenumber;
+        
+        return $this;
     }
 
     public function getPagePartId(): ?int
@@ -112,6 +122,8 @@ class PagePartRef
     public function setPagePartId(?int $pagePartId): self
     {
         $this->pagePartId = $pagePartId;
+        
+        return $this;
     }
 
     public function getPagePartEntityname(): ?string
@@ -122,6 +134,8 @@ class PagePartRef
     public function setPagePartEntityname(?string $pagePartEntityname): self
     {
         $this->pagePartEntityname = $pagePartEntityname;
+        
+        return $this;
     }
 
     public function getCreated(): ?DateTime
