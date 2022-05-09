@@ -132,6 +132,8 @@ class PagePartRef
     public function setCreated(?DateTime $created): self
     {
         $this->created = $created;
+        
+        return $this;
     }
 
     public function getUpdated(): ?DateTime
@@ -142,6 +144,8 @@ class PagePartRef
     public function setUpdated(?DateTime $updated): self
     {
         $this->updated = $updated;
+        
+        return $this;
     }
 
     #[ORM\PreUpdate]
