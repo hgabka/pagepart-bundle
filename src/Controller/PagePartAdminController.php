@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
@@ -43,14 +44,8 @@ class PagePartAdminController extends AbstractController
         $this->doctrine = $doctrine;
     }
 
-    /**
-     * @Route("/newPagePart", name="HgabkaPagePartBundle_admin_newpagepart")
-     *
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return array
-     */
-    public function newPagePartAction(Request $request)
+    #[Route('/newPagePart', name: 'HgabkaPagePartBundle_admin_newpagepart')]
+    public function newPagePartAction(Request $request): Response
     {
         $em = $this->doctrine;
 
