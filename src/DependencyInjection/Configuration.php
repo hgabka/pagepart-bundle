@@ -73,7 +73,7 @@ class Configuration implements ConfigurationInterface
         return $treeBuilder;
     }
 
-    protected function evaluateRows(& $child, $name)
+    protected function evaluateRows(&$child, $name)
     {
         $child = $this->getRowNode($name)->finalize($child);
     }
@@ -98,7 +98,7 @@ class Configuration implements ConfigurationInterface
             ->end();
     }
 
-    protected function evaluateRegions(& $child, $name)
+    protected function evaluateRegions(&$child, $name)
     {
         $child = $this->getRegionNode($name)->finalize($child);
     }

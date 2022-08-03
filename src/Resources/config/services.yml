@@ -21,7 +21,7 @@ services:
     hgabka_page_part.page_part_configuration_parser:
         class: '%hgabka_pagepart.page_part_configuration_parser.class%'
         public: false
-        arguments: [ '@kernel', '%hgabka_page_part.page_parts_presets%' ]
+        arguments: [ '@kernel', '@hgabka_utils.hgabka_utils', '%hgabka_page_part.page_parts_presets%' ]
 
     hgabka_page_part.page_template_configuration_reader:
         class: '%hgabka_pagepart.page_template_configuration_reader.class%'
@@ -30,7 +30,7 @@ services:
     hgabka_page_part.page_template_configuration_parser:
         class: '%hgabka_pagepart.page_template_configuration_parser.class%'
         public: false
-        arguments: [ '@kernel', '%hgabka_page_part.page_templates_presets%' ]
+        arguments: [ '@kernel', '@hgabka_utils.hgabka_utils', '%hgabka_page_part.page_templates_presets%' ]
 
 
     hgabka_page_part.page_template.page_template_configuration_service:

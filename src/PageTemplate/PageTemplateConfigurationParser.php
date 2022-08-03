@@ -2,6 +2,7 @@
 
 namespace Hgabka\PagePartBundle\PageTemplate;
 
+use Hgabka\UtilsBundle\Helper\HgabkaUtils;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Yaml\Yaml;
 
@@ -14,13 +15,17 @@ class PageTemplateConfigurationParser implements PageTemplateConfigurationParser
 
     private $presets = [];
 
+    /** @var HgabkaUtils */
+    private $utils;
+
     /**
      * @param KernelInterface $kernel
      * @param array           $presets
      */
-    public function __construct(KernelInterface $kernel, array $presets = [])
+    public function __construct(KernelInterface $kernel, HgabkaUtils $utils, array $presets = [])
     {
         $this->kernel = $kernel;
+        $this->utils = $utils;
         $this->presets = $presets;
     }
 
@@ -118,13 +123,18 @@ class PageTemplateConfigurationParser implements PageTemplateConfigurationParser
         }
 
         if (false === strpos($name, ':')) {
-            $path = $this->kernel->getProjectDir() . '/config/pagetemplates/' . $name . '.yml';
+            $path = $this->kernel->getProjectDir() . '/config/pagetemplates/' . $name . '.yaml';
         } else {
             [$namespace, $name] = explode(':', $name, 2);
-            $path = $this->kernel->locateResource('@' . $namespace . '/Resources/config/pagetemplates/' . $name . '.yml');
+            $path = $this->kernel->locateResource('@' . $namespace . '/Resources/config/pagetemplates/' . $name . '.yaml');
         }
-        $rawData = Yaml::parse(file_get_contents($path));
+        $contents = @file_get_contents($path);
 
-        return $rawData;
+        if (false === $contents) {
+            $path = $this->utils->replaceExtension($path, 'yml');
+            $contents = file_get_contents($path);
+        }
+
+        return Yaml::parse($contents);
     }
 }
