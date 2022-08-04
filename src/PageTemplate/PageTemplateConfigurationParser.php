@@ -2,6 +2,7 @@
 
 namespace Hgabka\PagePartBundle\PageTemplate;
 
+use Hgabka\UtilsBundle\Helper\HgabkaUtils;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Yaml\Yaml;
 
@@ -18,9 +19,10 @@ class PageTemplateConfigurationParser implements PageTemplateConfigurationParser
      * @param KernelInterface $kernel
      * @param array           $presets
      */
-    public function __construct(KernelInterface $kernel, array $presets = [])
+    public function __construct(KernelInterface $kernel, HgabkaUtils $utils, array $presets = [])
     {
         $this->kernel = $kernel;
+        $this->utils = $utils;
         $this->presets = $presets;
     }
 
