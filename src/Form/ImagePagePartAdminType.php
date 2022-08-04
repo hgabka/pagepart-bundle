@@ -37,7 +37,7 @@ class ImagePagePartAdminType extends AbstractPagePartAdminType
         ]);
         $builder->add('caption', TextType::class, [
             'required' => false,
-            'label' => 'mediapagepart.image.choosefile',
+            'label' => 'mediapagepart.image.caption',
         ]);
         $builder->add('altText', TextType::class, [
             'required' => false,
