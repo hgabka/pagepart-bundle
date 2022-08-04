@@ -4,6 +4,7 @@ namespace Hgabka\PagePartBundle\PagePartConfigurationReader;
 
 use Hgabka\PagePartBundle\PagePartAdmin\PagePartAdminConfigurator;
 use Hgabka\PagePartBundle\PagePartAdmin\PagePartAdminConfiguratorInterface;
+use Hgabka\UtilsBundle\Helper\HgabkaUtils;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Yaml\Yaml;
 
@@ -17,14 +18,18 @@ class PagePartConfigurationParser implements PagePartConfigurationParserInterfac
     private $presets = [];
 
     private $stack = [];
+    
+    /** @var HgabkaUtils */
+    private $utils;
 
     /**
      * @param KernelInterface $kernel
      * @param array           $presets
      */
-    public function __construct(KernelInterface $kernel, array $presets = [])
+    public function __construct(KernelInterface $kernel, HgabkaUtils $utils, array $presets = [])
     {
         $this->kernel = $kernel;
+        $this->utils = $utils;
         $this->presets = $presets;
     }
 
