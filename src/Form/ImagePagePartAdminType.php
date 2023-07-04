@@ -26,7 +26,7 @@ class ImagePagePartAdminType extends AbstractPagePartAdminType
      *
      * @see FormTypeExtensionInterface::buildForm()
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         parent::buildForm($builder, $options);
 
@@ -61,7 +61,7 @@ class ImagePagePartAdminType extends AbstractPagePartAdminType
      *
      * @return string The name of this type
      */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'imagepageparttype';
     }
@@ -71,7 +71,7 @@ class ImagePagePartAdminType extends AbstractPagePartAdminType
      *
      * @param OptionsResolver $resolver the resolver for the options
      */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         parent::configureOptions($resolver);
         $resolver->setDefaults([
