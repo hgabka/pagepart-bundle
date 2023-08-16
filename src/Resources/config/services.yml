@@ -44,7 +44,7 @@ services:
         public: false
         factory: [ '@doctrine.orm.entity_manager', 'getRepository' ]
         arguments:
-          - 'HgabkaPagePartBundle:PageTemplateConfiguration'
+          - '\Hgabka\PagePartBundle\Entity\PageTemplateConfiguration'
 
     hgabka_pagepartadmin.factory:
         class: 'Hgabka\PagePartBundle\PagePartAdmin\PagePartAdminFactory'
