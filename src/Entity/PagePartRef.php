@@ -15,11 +15,11 @@ use Hgabka\PagePartBundle\Repository\PagePartRefRepository;
 class PagePartRef
 {
     #[ORM\Id]
-    #[ORM\Column(type: 'bigint')]
+    #[ORM\Column(type: 'integer')]
     #[ORM\GeneratedValue(strategy: 'AUTO')]
     protected ?int $id = null;
 
-    #[ORM\Column(name: 'page_id', type: 'bigint')]
+    #[ORM\Column(name: 'page_id', type: 'integer')]
     protected ?int $pageId = null;
 
     #[ORM\Column(name: 'page_entityname', type: 'string')]
@@ -31,7 +31,7 @@ class PagePartRef
     #[ORM\Column(name: 'sequencenumber', type: 'integer')]
     protected ?int $sequencenumber = null;
 
-    #[ORM\Column(name: 'page_part_id', type: 'bigint')]
+    #[ORM\Column(name: 'page_part_id', type: 'integer')]
     protected ?int $pagePartId = null;
 
     #[ORM\Column(name: 'page_part_entityname', type: 'string')]
