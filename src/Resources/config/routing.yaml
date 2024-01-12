@@ -1,5 +1,4 @@
 HgabkaPagePartBundle_pagepartadmin:
     resource: '@HgabkaPagePartBundle/Controller/PagePartAdminController.php'
-    type:     annotation
+    type:     attribute
     prefix:   /admin
-
