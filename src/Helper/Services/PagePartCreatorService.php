@@ -207,7 +207,7 @@ class PagePartCreatorService
      *
      * @return callable the function that will instantiate a pagepart
      */
-    public function getCreatorArgumentsForPagePartAndProperties($pagePartClassName, array $setters = null)
+    public function getCreatorArgumentsForPagePartAndProperties($pagePartClassName, ?array $setters = null)
     {
         return function () use ($pagePartClassName, $setters) {
             $pp = new $pagePartClassName();
