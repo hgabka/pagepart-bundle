@@ -19,7 +19,7 @@ abstract class AbstractPagePart implements PagePartInterface
     #[ORM\Id]
     #[ORM\Column(type: 'integer')]
     #[ORM\GeneratedValue(strategy: 'AUTO')]
-    protected ?int $id = null;
+    public ?int $id = null;
 
     public function getId(): ?int
     {
