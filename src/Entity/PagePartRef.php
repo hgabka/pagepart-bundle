@@ -15,11 +15,11 @@ use Hgabka\PagePartBundle\Repository\PagePartRefRepository;
 class PagePartRef
 {
     #[ORM\Id]
-    #[ORM\Column(type: 'bigint')]
+    #[ORM\Column(type: 'integer')]
     #[ORM\GeneratedValue(strategy: 'AUTO')]
     protected ?int $id = null;
 
-    #[ORM\Column(name: 'page_id', type: 'bigint')]
+    #[ORM\Column(name: 'page_id', type: 'integer')]
     protected ?int $pageId = null;
 
     #[ORM\Column(name: 'page_entityname', type: 'string')]
@@ -31,7 +31,7 @@ class PagePartRef
     #[ORM\Column(name: 'sequencenumber', type: 'integer')]
     protected ?int $sequencenumber = null;
 
-    #[ORM\Column(name: 'page_part_id', type: 'bigint')]
+    #[ORM\Column(name: 'page_part_id', type: 'integer')]
     protected ?int $pagePartId = null;
 
     #[ORM\Column(name: 'page_part_entityname', type: 'string')]
@@ -62,7 +62,7 @@ class PagePartRef
     public function setId(?int $num): self
     {
         $this->id = $num;
-        
+
         return $this;
     }
 
@@ -74,7 +74,7 @@ class PagePartRef
     public function setPageId(?int $id): self
     {
         $this->pageId = $id;
-        
+
         return $this;
     }
 
@@ -86,7 +86,7 @@ class PagePartRef
     public function setPageEntityname(?string $pageEntityname): self
     {
         $this->pageEntityname = $pageEntityname;
-        
+
         return $this;
     }
 
@@ -98,7 +98,7 @@ class PagePartRef
     public function setContext(?string $context): self
     {
         $this->context = $context;
-        
+
         return $this;
     }
 
@@ -110,7 +110,7 @@ class PagePartRef
     public function setSequencenumber(?int $sequencenumber): self
     {
         $this->sequencenumber = $sequencenumber;
-        
+
         return $this;
     }
 
@@ -122,7 +122,7 @@ class PagePartRef
     public function setPagePartId(?int $pagePartId): self
     {
         $this->pagePartId = $pagePartId;
-        
+
         return $this;
     }
 
@@ -134,7 +134,7 @@ class PagePartRef
     public function setPagePartEntityname(?string $pagePartEntityname): self
     {
         $this->pagePartEntityname = $pagePartEntityname;
-        
+
         return $this;
     }
 
@@ -146,7 +146,7 @@ class PagePartRef
     public function setCreated(?DateTime $created): self
     {
         $this->created = $created;
-        
+
         return $this;
     }
 
@@ -158,7 +158,7 @@ class PagePartRef
     public function setUpdated(?DateTime $updated): self
     {
         $this->updated = $updated;
-        
+
         return $this;
     }
 

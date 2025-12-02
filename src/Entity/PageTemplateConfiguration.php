@@ -17,7 +17,7 @@ class PageTemplateConfiguration
     #[ORM\GeneratedValue(strategy: 'AUTO')]
     protected ?int $id = null;
 
-    #[ORM\Column(name: 'page_id', type: 'bigint')]
+    #[ORM\Column(name: 'page_id', type: 'integer')]
     protected ?int $pageId = null;
 
     #[ORM\Column(name: 'page_entity_name', type: 'string')]

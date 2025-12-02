@@ -1,4 +1,3 @@
-<div class="js-pp-container pp-container" data-context="{{ pagepartadmin.context }}" data-pageid="{{ pagepartadmin.page.id }}" data-pageclassname="{{ pagepartadmin.getClassName(pagepartadmin.page) }}">
 {% if config.viewCss is defined %}
     {% if config.viewCss is iterable %}
         {% for cssFile in config.viewCss %}
@@ -8,6 +7,7 @@
         <link rel="stylesheet" href="{{ asset(config.viewCss) }}">
     {% endif %}
 {% endif %}
+<div class="js-pp-container pp-container" data-context="{{ pagepartadmin.context }}" data-pageid="{{ pagepartadmin.page.id }}" data-pageclassname="{{ pagepartadmin.getClassName(pagepartadmin.page) }}">
     {% if pagepartadmin.possiblePagePartTypes | length > 0 %}
         <!-- First New PP select -->
         {% include '@HgabkaPagePart/PagePartAdminTwigExtension/add_pagepart.html.twig' with {first: true} %}
@@ -26,4 +26,3 @@
 {% endif %}
 
 <div id="pageparts-deleted-container"></div>
-
