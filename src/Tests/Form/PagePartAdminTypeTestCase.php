@@ -45,7 +45,7 @@ class PagePartAdminTypeTestCase extends WebTestCase
     {
         $formFactoryBuilderInterface = Forms::createFormFactoryBuilder();
         $formFactoryBuilderInterface->addType(new URLChooserType());
-        $formFactoryBuilderInterface->addTypeGuesser(new DoctrineOrmTypeGuesser($this->getMock('Doctrine\Common\Persistence\ManagerRegistry')));
+        $formFactoryBuilderInterface->addTypeGuesser(new DoctrineOrmTypeGuesser($this->getMock('Doctrine\Persistence\ManagerRegistry')));
         $this->factory = $formFactoryBuilderInterface->getFormFactory();
         $this->dispatcher = $this->getMock('Symfony\Component\EventDispatcher\EventDispatcherInterface');
         $this->builder = new FormBuilder(null, null, $this->dispatcher, $this->factory);
