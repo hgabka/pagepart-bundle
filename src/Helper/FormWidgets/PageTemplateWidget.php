@@ -140,7 +140,7 @@ class PageTemplateWidget extends FormWidget
      */
     public function bindRequest(Request $request)
     {
-        $configurationname = $request->get('pagetemplate_template');
+        $configurationname = \Hgabka\UtilsBundle\Helper\RequestHelper::get($request, 'pagetemplate_template');
         $this->pageTemplateConfiguration->setPageTemplate($configurationname);
         foreach ($this->widgets as $widget) {
             $widget->bindRequest($request);

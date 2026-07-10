@@ -12,7 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 /**
@@ -49,10 +49,10 @@ class PagePartAdminController extends AbstractController
     {
         $em = $this->doctrine;
 
-        $pageId = $request->get('pageid');
-        $pageClassName = $request->get('pageclassname');
-        $context = $request->get('context');
-        $pagePartClass = $request->get('type');
+        $pageId = \Hgabka\UtilsBundle\Helper\RequestHelper::get($request, 'pageid');
+        $pageClassName = \Hgabka\UtilsBundle\Helper\RequestHelper::get($request, 'pageclassname');
+        $context = \Hgabka\UtilsBundle\Helper\RequestHelper::get($request, 'context');
+        $pagePartClass = \Hgabka\UtilsBundle\Helper\RequestHelper::get($request, 'type');
 
         /** @var HasPagePartsInterface $page */
         $page = $em->getRepository($pageClassName)->find($pageId);

@@ -132,7 +132,7 @@ class PagePartWidget extends FormWidget
     public function getExtraParams(Request $request)
     {
         $params = [];
-        $editPagePart = $request->get('edit');
+        $editPagePart = \Hgabka\UtilsBundle\Helper\RequestHelper::get($request, 'edit');
         if (isset($editPagePart)) {
             $params['editpagepart'] = $editPagePart;
         }
