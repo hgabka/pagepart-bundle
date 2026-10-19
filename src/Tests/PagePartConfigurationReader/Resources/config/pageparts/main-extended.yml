@@ -1,8 +1,0 @@
-extends: main
-context: main
-name: Extended main
-types:
-  - name: FooBar
-    class: ~
-  - name: Baz
-    class: BazPagePart
