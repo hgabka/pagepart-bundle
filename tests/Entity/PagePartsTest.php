@@ -23,6 +23,7 @@ use Hgabka\PagePartBundle\Form\ToTopPagePartAdminType;
 use Hgabka\PagePartBundle\Helper\PagePartInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Validator\Validation;
 
 class PagePartsTest extends TestCase
 {
@@ -85,6 +86,19 @@ class PagePartsTest extends TestCase
 
         $this->assertSame([2, 'Cím'], [$part->getNiv(), $part->getTitle()]);
         $this->assertSame('HeaderPagePart Cím', (string) $part);
+    }
+
+    public function testHeaderPagePartRequiresLevelAndTitle(): void
+    {
+        $validator = Validation::createValidatorBuilder()->addMethodMapping('loadValidatorMetadata')->getValidator();
+
+        $violations = $validator->validate(new HeaderPagePart());
+
+        $this->assertSame(
+            ['headerpagepart.niv.not_blank', 'headerpagepart.title.not_blank'],
+            array_map(static fn ($v) => $v->getMessage(), iterator_to_array($violations))
+        );
+        $this->assertCount(0, $validator->validate((new HeaderPagePart())->setNiv(1)->setTitle('x')));
     }
 
     public function testLinkPagePart(): void

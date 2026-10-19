@@ -24,8 +24,8 @@ class HeaderPagePart extends AbstractPagePart
 
     public static function loadValidatorMetadata(ClassMetadata $metadata): void
     {
-        $metadata->addPropertyConstraint('niv', new NotBlank(['message' => 'headerpagepart.niv.not_blank']));
-        $metadata->addPropertyConstraint('title', new NotBlank(['message' => 'headerpagepart.title.not_blank']));
+        $metadata->addPropertyConstraint('niv', new NotBlank(message: 'headerpagepart.niv.not_blank'));
+        $metadata->addPropertyConstraint('title', new NotBlank(message: 'headerpagepart.title.not_blank'));
     }
 
     public function setNiv(?int $niv): self

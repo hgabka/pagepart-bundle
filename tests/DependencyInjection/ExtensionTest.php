@@ -25,6 +25,15 @@ class ExtensionTest extends TestCase
         (new Processor())->processConfiguration(new Configuration(), [['pageparts' => [['types' => []]]]]);
     }
 
+    public function testNestedRowsAreAccepted(): void
+    {
+        $config = (new Processor())->processConfiguration(new Configuration(), [[
+            'pagetemplates' => ['t' => ['name' => 'T', 'template' => 't.twig', 'rows' => [['regions' => [['name' => 'main', 'rows' => [[['name' => 'inner', 'span' => 6]]]]]]]]],
+        ]]);
+
+        $this->assertSame('inner', $config['pagetemplates']['t']['rows'][0]['regions'][0]['rows'][0][0]['name']);
+    }
+
     public function testPresetsAndSwitchesBecomeParameters(): void
     {
         $container = new ContainerBuilder();
