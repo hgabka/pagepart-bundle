@@ -167,12 +167,20 @@ class PagePartAdmin
             $tempPageparts = $this->pageParts;
             $this->pageParts = [];
             foreach ($sequences as $sequence) {
+                // Pageparts deleted in this very request are still listed in the sequence
+                if ('true' === $request->get($sequence . '_deleted')) {
+                    continue;
+                }
+
                 if (\array_key_exists($sequence, $this->newPageParts)) {
                     $this->pageParts[$sequence] = $this->newPageParts[$sequence];
                 } elseif (\array_key_exists($sequence, $tempPageparts)) {
                     $this->pageParts[$sequence] = $tempPageparts[$sequence];
                 } else {
-                    $this->pageParts[$sequence] = $this->getPagePart($sequence, array_search($sequence, $sequences, true) + 1);
+                    $pagePart = $this->getPagePart($sequence, array_search($sequence, $sequences, true) + 1);
+                    if (null !== $pagePart) {
+                        $this->pageParts[$sequence] = $pagePart;
+                    }
                 }
             }
 
@@ -336,7 +344,7 @@ class PagePartAdmin
      * @param int $id
      * @param int $sequenceNumber
      *
-     * @return PagePartInterface
+     * @return PagePartInterface|null
      */
     public function getPagePart($id, $sequenceNumber)
     {
