@@ -23,6 +23,21 @@ hgabka_pagepart:
 
 Függőség: `hgabka/utils-bundle`. Táblák: `hg_page_part_page_part_refs`, `hg_page_part_page_template_configuration` + az egyes oldalrész-típusok táblái (migrációval hozd létre).
 
+### Repók
+
+A hgabka csomagok nem szerepelnek a Packagiten, ezért a projekt `composer.json`-jában fel kell venni a repóikat (a függőségek saját `repositories` mezőjét a Composer nem olvassa). A repók nyilvánosak, az `https` url-ekhez nem kell SSH kulcs. Aki GitHub SSH kulccsal dolgozik, használhatja a `git@github.com:hgabka/<név>.git` url-eket is. Kulcs nélkül az anonim GitHub API kérés-limit (60/óra) miatt a Composer előbb-utóbb tokent kérhet.
+
+```json
+"repositories": [
+    {"type": "vcs", "url": "https://github.com/hgabka/utils-bundle.git"},
+    {"type": "vcs", "url": "https://github.com/hgabka/doctrine-translatable.git"},
+    {"type": "vcs", "url": "https://github.com/hgabka/doctrine-translatable-bundle.git"},
+    {"type": "vcs", "url": "https://github.com/hgabka/acl-bundle.git"},
+    {"type": "vcs", "url": "https://github.com/hgabka/security-acl.git"},
+    {"type": "vcs", "url": "https://github.com/hgabka/pagepart-bundle.git"}
+]
+```
+
 ## Konfiguráció
 
 ```yaml
@@ -151,3 +166,7 @@ vendor/bin/phpunit
 ```
 
 A PHPUnit verziója a PHP verziótól függ (a 12–13-as ág PHP 8.4-et kér). A tesztek a `PagePartAdmin` oldalrész-sorrendezését és törlését (`tests/PagePartAdmin`), a `PagePartRefRepository`-t (`tests/Repository`), az entitásokat, a konfiguráció-olvasót és a DI kiterjesztést fedik le.
+
+## Licenc
+
+MIT, lásd: [LICENSE](LICENSE).

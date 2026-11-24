@@ -4,7 +4,7 @@
     "description": "Pagepart bundle",
     "keywords": [],
     "homepage": "https://github.com/hgabka/pagepart-bundle",
-    "license": "proprietary",
+    "license": "MIT",
     "authors": [
         {
             "name": "Gabe",
