@@ -143,7 +143,7 @@ A `Helper\Services\PagePartCreatorService` (`addPagePartToPage()`, `addPageParts
 
 ## Tesztek
 
-A bundle tesztjei PHPUnittal futnak. A `require-dev` tartalmazza a szükséges csomagokat, a privát hgabka bundle-ök VCS repóit a `composer.json` `repositories` szekciója adja, így önmagában is telepíthető (SSH hozzáférés kell a `git@github.com:hgabka/...` repókhoz):
+A bundle tesztjei PHPUnittal futnak. A `require-dev` tartalmazza a szükséges csomagokat, a többi hgabka bundle VCS repóit pedig a `composer.json` `repositories` szekciója adja, így önmagában is telepíthető. A repók nyilvánosak; a `git@github.com:hgabka/...` url-ek SSH kulcsot kérnek (ez elkerüli az anonim GitHub API kérés-limitet). Kulcs nélkül a `repositories` url-jeit `https://github.com/hgabka/...`-ra kell cserélni:
 
 ```bash
 composer install
