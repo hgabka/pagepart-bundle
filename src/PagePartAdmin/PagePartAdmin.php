@@ -168,7 +168,7 @@ class PagePartAdmin
             $this->pageParts = [];
             foreach ($sequences as $sequence) {
                 // Pageparts deleted in this very request are still listed in the sequence
-                if ('true' === $request->get($sequence . '_deleted')) {
+                if ('true' === \Hgabka\UtilsBundle\Helper\RequestHelper::get($request, $sequence . '_deleted')) {
                     continue;
                 }
 
