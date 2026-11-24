@@ -1,6 +1,6 @@
 {
     "name": "hgabka/pagepart-bundle",
-    "type": "Symfony bundle",
+    "type": "symfony-bundle",
     "description": "Pagepart bundle",
     "keywords": [
     ],
