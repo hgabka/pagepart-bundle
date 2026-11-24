@@ -140,3 +140,14 @@ A `Helper\Services\PagePartCreatorService` (`addPagePartToPage()`, `addPageParts
 
 - `Event\Events::POST_PERSIST` (`hgabka_pagepart.postPersist`, `PagePartEvent`) – oldalrész mentése után.
 - `EventListener\NodeListener` – a node-bundle `AdaptFormEvent`-jére kiegészíti az oldal szerkesztő űrlapját az oldalrész- és oldalsablon-widgetekkel; `EventListener\CloneListener` – az utils-bundle `DeepCloneAndSaveEvent`-jére klónozáskor lemásolja az oldalrészeket is.
+
+## Tesztek
+
+A bundle tesztjei PHPUnittal futnak. A `require-dev` tartalmazza a szükséges csomagokat, a privát hgabka bundle-ök VCS repóit a `composer.json` `repositories` szekciója adja, így önmagában is telepíthető (SSH hozzáférés kell a `git@github.com:hgabka/...` repókhoz):
+
+```bash
+composer install
+vendor/bin/phpunit
+```
+
+A PHPUnit verziója a PHP verziótól függ (a 12–13-as ág PHP 8.4-et kér). A tesztek a `PagePartAdmin` oldalrész-sorrendezését és törlését (`tests/PagePartAdmin`), a `PagePartRefRepository`-t (`tests/Repository`), az entitásokat, a konfiguráció-olvasót és a DI kiterjesztést fedik le.

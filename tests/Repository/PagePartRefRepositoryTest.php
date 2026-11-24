@@ -50,7 +50,7 @@ class PagePartRefRepositoryTest extends TestCase
 
         $partRepo = $this->createMock(EntityRepository::class);
         $partRepo->expects(self::once())->method('find')->with(55)->willReturn($part);
-        $this->em->method('getRepository')->with(TextPagePart::class)->willReturn($partRepo);
+        $this->em->expects(self::once())->method('getRepository')->with(TextPagePart::class)->willReturn($partRepo);
 
         self::assertSame($part, $this->repository->getPagePart(5, 'mobile', 4));
         self::assertSame('mobile', $ref->getContext());
