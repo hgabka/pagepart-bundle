@@ -187,11 +187,15 @@ class PagePartRefRepository extends EntityRepository
      * @param string $context        The context
      * @param int    $sequenceNumber The sequence number
      *
-     * @return PagePartInterface
+     * @return PagePartInterface|null
      */
     public function getPagePart($id, $context, $sequenceNumber)
     {
         $ppRef = $this->find($id);
+        if (null === $ppRef) {
+            return null;
+        }
+
         $ppRef->setContext($context);
         $ppRef->setSequenceNumber($sequenceNumber);
         $this->getEntityManager()->persist($ppRef);
